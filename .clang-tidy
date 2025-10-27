@@ -1,0 +1,27 @@
+Checks: >
+  clang-analyzer-*,
+  concurrency-*,
+  cppcoreguidelines-*,
+  llvm-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -modernize-use-trailing-return-type
+
+CheckOptions:
+  readability-identifier-naming.NamespaceCase: lower_case
+  readability-identifier-naming.ClassCase: PascalCase
+  readability-identifier-naming.FunctionCase: camelBack
+
+  readability-identifier-naming.ConstantCase: UPPER_CASE
+  readability-identifier-naming.StaticConstantCase: UPPER_CASE
+  readability-identifier-naming.ConstantParametrCase: UPPER_CASE
+
+  readability-identifier-naming.ConstantMemberCase: UPPER_CASE
+  readability-identifier-naming.ConstantMemberSuffix: ""
+
+  readability-identifier-naming.VariableCase: camelBack
+
+  readability-identifier-naming.PrivateMemberVariableCase: camelBack
+  readability-identifier-naming.PrivateMemberVariablePrefix: m_
