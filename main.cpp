@@ -66,6 +66,11 @@ int main()
         return 1;
     }
 
+    if (SDL_SetWindowRelativeMouseMode(mainWindow, true)) // Используем SDL_TRUE для включения
+    {
+        std::cout << "Warning: Could not enable relative mouse mode: " << SDL_GetError() << "\n";
+    }
+
     SDL_Event event;
 
     glEnable(GL_DEPTH_TEST);
@@ -134,6 +139,8 @@ int main()
                  colorData,
                  GL_STATIC_DRAW);
 
+    const float mouseSensitivity = 0.1f;
+
     float currentAngel = 0.0F;
 
     while (true)
@@ -195,6 +202,21 @@ int main()
                 {
                     camera.moveUp(-speed);
                 }
+            }
+            if (event.type == SDL_EVENT_MOUSE_MOTION)
+            {
+                // Получаем относительное смещение мыши
+                float deltaX = (float)event.motion.xrel;
+                float deltaY = (float)event.motion.yrel; // Обратите внимание на SDL_MouseMotionEvent
+
+                // Рыскание (Yaw) - поворот вокруг оси Y (горизонтальное движение мыши)
+                // Используем отрицательное значение для инвертирования (если вам нужно)
+                camera.rotateYaw(-deltaX * mouseSensitivity);
+
+                // Тангаж (Pitch) - поворот вокруг оси X (вертикальное движение мыши)
+                // Отрицательное значение для инвертирования:
+                // Движение мыши вверх (отрицательный deltaY) должно вращать камеру вверх (положительный Pitch)
+                camera.rotatePitch(-deltaY * mouseSensitivity);
             }
         }
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
