@@ -2,6 +2,7 @@
 #include "SDL3/SDL_events.h"
 #include "SDL3/SDL_init.h"
 #include "SDL3/SDL_keycode.h"
+#include "SDL3/SDL_mouse.h"
 #include "SDL3/SDL_timer.h"
 #include "SDL3/SDL_video.h"
 #include <GL/glew.h>  // Подключение GLEW
@@ -66,7 +67,9 @@ int main()
         return 1;
     }
 
-    if (SDL_SetWindowRelativeMouseMode(mainWindow, true)) // Используем SDL_TRUE для включения
+    bool mouseHandle = true;
+
+    if (SDL_SetWindowRelativeMouseMode(mainWindow, mouseHandle)) // Используем SDL_TRUE для включения
     {
         std::cout << "Warning: Could not enable relative mouse mode: " << SDL_GetError() << "\n";
     }
@@ -88,7 +91,7 @@ int main()
 
     GLuint matrixID = glGetUniformLocation(programID, "MVP");
 
-    Camera camera(glm::vec3(4.0f, 3.0f, 3.0f), // Немного выше и дальше для лучшего обзора
+    Camera camera(glm::vec3(4.0f, 0.0f, 0.0f), // Немного выше и дальше для лучшего обзора
                   glm::vec3(0.0f, 0.0f, 0.0f),
                   glm::vec3(0.0f, 1.0f, 0.0f));
 
@@ -145,6 +148,57 @@ int main()
 
     while (true)
     {
+        const bool *key_states = SDL_GetKeyboardState(nullptr);
+
+        if (key_states[SDL_SCANCODE_A])
+        {
+            // Движение влево (отрицательное по оси right)
+            camera.moveRight(speed);
+        }
+        if (key_states[SDL_SCANCODE_D])
+        {
+            // Движение вправо (положительное по оси right)
+            camera.moveRight(-speed);
+        }
+        if (key_states[SDL_SCANCODE_W])
+        {
+            // Движение вперед (положительное по оси forward)
+            camera.moveForward(speed);
+        }
+        if (key_states[SDL_SCANCODE_S])
+        {
+            // Движение назад (отрицательное по оси forward)
+            camera.moveForward(-speed);
+        }
+        if (key_states[SDL_SCANCODE_E])
+        {
+            camera.rotateYaw(-rotateSpeed);
+            std::cout << currentAngel - rotateSpeed << "\n";
+            currentAngel -= rotateSpeed;
+        }
+        if (key_states[SDL_SCANCODE_Q])
+        {
+            camera.rotateYaw(rotateSpeed);
+            std::cout << currentAngel + rotateSpeed << "\n";
+            currentAngel += rotateSpeed;
+        }
+        if (key_states[SDL_SCANCODE_TAB])
+        {
+            camera.rotatePitch(rotateSpeed);
+        }
+        if (key_states[SDL_SCANCODE_CAPSLOCK])
+        {
+            camera.rotatePitch(-rotateSpeed);
+        }
+        if (key_states[SDL_SCANCODE_SPACE])
+        {
+            camera.moveUp(speed);
+        }
+        if (key_states[SDL_SCANCODE_LSHIFT])
+        {
+            camera.moveUp(-speed);
+        }
+
         while (SDL_PollEvent(&event))
         {
             if (event.type == SDL_EVENT_QUIT)
@@ -153,69 +207,19 @@ int main()
             }
             if (event.type == SDL_EVENT_KEY_DOWN)
             {
-                // // Здесь используем методы moveRight() и moveForward() класса Camera
-                if (event.key.key == SDLK_A)
+                if (event.key.key == SDLK_ESCAPE)
                 {
-                    // Движение влево (отрицательное по оси right)
-                    camera.moveRight(-speed);
-                }
-                else if (event.key.key == SDLK_D)
-                {
-                    // Движение вправо (положительное по оси right)
-                    camera.moveRight(speed);
-                }
-                else if (event.key.key == SDLK_W)
-                {
-                    // Движение вперед (положительное по оси forward)
-                    camera.moveForward(speed);
-                }
-                else if (event.key.key == SDLK_S)
-                {
-                    // Движение назад (отрицательное по оси forward)
-                    camera.moveForward(-speed);
-                }
-                else if (event.key.key == SDLK_E)
-                {
-                    camera.rotateYaw(-rotateSpeed);
-                    std::cout << currentAngel - rotateSpeed << "\n";
-                    currentAngel -= rotateSpeed;
-                }
-                else if (event.key.key == SDLK_Q)
-                {
-                    camera.rotateYaw(rotateSpeed);
-                    std::cout << currentAngel + rotateSpeed << "\n";
-                    currentAngel += rotateSpeed;
-                }
-                else if (event.key.key == SDLK_TAB)
-                {
-                    camera.rotatePitch(rotateSpeed);
-                }
-                else if (event.key.key == SDLK_CAPSLOCK)
-                {
-                    camera.rotatePitch(-rotateSpeed);
-                }
-                if (event.key.key == SDLK_UP)
-                {
-                    camera.moveUp(speed);
-                }
-                if (event.key.key == SDLK_DOWN)
-                {
-                    camera.moveUp(-speed);
+                    mouseHandle = !mouseHandle;
+                    SDL_SetWindowRelativeMouseMode(mainWindow, mouseHandle);
                 }
             }
-            if (event.type == SDL_EVENT_MOUSE_MOTION)
+            if (mouseHandle && event.type == SDL_EVENT_MOUSE_MOTION)
             {
-                // Получаем относительное смещение мыши
                 float deltaX = (float)event.motion.xrel;
-                float deltaY = (float)event.motion.yrel; // Обратите внимание на SDL_MouseMotionEvent
+                float deltaY = (float)event.motion.yrel;
 
-                // Рыскание (Yaw) - поворот вокруг оси Y (горизонтальное движение мыши)
-                // Используем отрицательное значение для инвертирования (если вам нужно)
-                camera.rotateYaw(-deltaX * mouseSensitivity);
+                camera.rotateYaw(deltaX * mouseSensitivity);
 
-                // Тангаж (Pitch) - поворот вокруг оси X (вертикальное движение мыши)
-                // Отрицательное значение для инвертирования:
-                // Движение мыши вверх (отрицательный deltaY) должно вращать камеру вверх (положительный Pitch)
                 camera.rotatePitch(-deltaY * mouseSensitivity);
             }
         }

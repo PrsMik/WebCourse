@@ -22,7 +22,7 @@ msvc_deps_prefix = Note: including file:
 
 rule CXX_COMPILER__Wordle.2b.2b_unscanned_Debug
   deps = msvc
-  command = ${LAUNCHER}${CODE_CHECK}"D:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo -TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
+  command = ${LAUNCHER}${CODE_CHECK}"E:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo -TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
   description = Building CXX object $out
 
 
@@ -30,7 +30,7 @@ rule CXX_COMPILER__Wordle.2b.2b_unscanned_Debug
 # Rule for linking CXX executable.
 
 rule CXX_EXECUTABLE_LINKER__Wordle.2b.2b_Debug
-  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=$OBJECT_DIR --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt="D:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-mt.exe" --manifests $MANIFESTS -- "D:\Visual Studio\VC\Tools\Llvm\x64\bin\lld-link.exe" /nologo $in  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /version:0.0 $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
+  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && "E:\Visual Studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=$OBJECT_DIR --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt="E:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-mt.exe" --manifests $MANIFESTS -- "E:\Visual Studio\VC\Tools\Llvm\x64\bin\lld-link.exe" /nologo $in  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /version:0.0 $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
 
@@ -48,7 +48,7 @@ rule CUSTOM_COMMAND
 
 rule C_COMPILER__SDL3-shared_unscanned_Debug
   deps = msvc
-  command = ${LAUNCHER}${CODE_CHECK}"D:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
+  command = ${LAUNCHER}${CODE_CHECK}"E:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
   description = Building C object $out
 
 
@@ -57,7 +57,7 @@ rule C_COMPILER__SDL3-shared_unscanned_Debug
 
 rule CXX_COMPILER__SDL3-shared_unscanned_Debug
   deps = msvc
-  command = ${LAUNCHER}${CODE_CHECK}"D:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo -TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
+  command = ${LAUNCHER}${CODE_CHECK}"E:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo -TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
   description = Building CXX object $out
 
 
@@ -67,7 +67,7 @@ rule CXX_COMPILER__SDL3-shared_unscanned_Debug
 rule RC_COMPILER__SDL3-shared_unscanned_Debug
   depfile = $DEP_FILE
   deps = gcc
-  command = C:/PROGRA~1/CMake/bin/cmcldeps.exe RC $in $DEP_FILE $out "Note: including file: " "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-cl.exe" ${LAUNCHER}${CODE_CHECK}C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe $DEFINES $INCLUDES $FLAGS /fo $out $in
+  command = E:/Visual Studio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmcldeps.exe RC $in $DEP_FILE $out "Note: including file: " "E:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-cl.exe" ${LAUNCHER}${CODE_CHECK}C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe $DEFINES $INCLUDES $FLAGS /fo $out $in
   description = Building RC object $out
 
 
@@ -75,7 +75,7 @@ rule RC_COMPILER__SDL3-shared_unscanned_Debug
 # Rule for linking CXX shared library.
 
 rule CXX_SHARED_LIBRARY_LINKER__SDL3-shared_Debug
-  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E vs_link_dll --msvc-ver=1944 --intdir=$OBJECT_DIR --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt="D:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-mt.exe" --manifests $MANIFESTS -- "D:\Visual Studio\VC\Tools\Llvm\x64\bin\lld-link.exe" /nologo @$RSP_FILE  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /dll /version:0.0 $LINK_FLAGS && $POST_BUILD"
+  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && "E:\Visual Studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_dll --msvc-ver=1944 --intdir=$OBJECT_DIR --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt="E:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-mt.exe" --manifests $MANIFESTS -- "E:\Visual Studio\VC\Tools\Llvm\x64\bin\lld-link.exe" /nologo @$RSP_FILE  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /dll /version:0.0 $LINK_FLAGS && $POST_BUILD"
   description = Linking CXX shared library $TARGET_FILE
   rspfile = $RSP_FILE
   rspfile_content = $in_newline $LINK_PATH $LINK_LIBRARIES
@@ -87,7 +87,7 @@ rule CXX_SHARED_LIBRARY_LINKER__SDL3-shared_Debug
 
 rule C_COMPILER__SDL3_test_unscanned_Debug
   deps = msvc
-  command = ${LAUNCHER}${CODE_CHECK}"D:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
+  command = ${LAUNCHER}${CODE_CHECK}"E:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
   description = Building C object $out
 
 
@@ -95,7 +95,7 @@ rule C_COMPILER__SDL3_test_unscanned_Debug
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__SDL3_test_Debug
-  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && "D:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-lib.exe" /nologo $LINK_FLAGS /out:$TARGET_FILE $in && $POST_BUILD"
+  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && "E:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-lib.exe" /nologo $LINK_FLAGS /out:$TARGET_FILE $in && $POST_BUILD"
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -105,7 +105,7 @@ rule C_STATIC_LIBRARY_LINKER__SDL3_test_Debug
 
 rule C_COMPILER__SDL_uclibc_unscanned_Debug
   deps = msvc
-  command = ${LAUNCHER}${CODE_CHECK}"D:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
+  command = ${LAUNCHER}${CODE_CHECK}"E:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
   description = Building C object $out
 
 
@@ -113,7 +113,7 @@ rule C_COMPILER__SDL_uclibc_unscanned_Debug
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__SDL_uclibc_Debug
-  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && "D:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-lib.exe" /nologo $LINK_FLAGS /out:$TARGET_FILE $in && $POST_BUILD"
+  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && "E:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-lib.exe" /nologo $LINK_FLAGS /out:$TARGET_FILE $in && $POST_BUILD"
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -123,7 +123,7 @@ rule C_STATIC_LIBRARY_LINKER__SDL_uclibc_Debug
 
 rule C_COMPILER__glew_unscanned_Debug
   deps = msvc
-  command = ${LAUNCHER}${CODE_CHECK}"D:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
+  command = ${LAUNCHER}${CODE_CHECK}"E:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
   description = Building C object $out
 
 
@@ -133,7 +133,7 @@ rule C_COMPILER__glew_unscanned_Debug
 rule RC_COMPILER__glew_unscanned_Debug
   depfile = $DEP_FILE
   deps = gcc
-  command = C:/PROGRA~1/CMake/bin/cmcldeps.exe RC $in $DEP_FILE $out "Note: including file: " "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-cl.exe" ${LAUNCHER}${CODE_CHECK}C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe $DEFINES $INCLUDES $FLAGS /fo $out $in
+  command = E:/Visual Studio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmcldeps.exe RC $in $DEP_FILE $out "Note: including file: " "E:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-cl.exe" ${LAUNCHER}${CODE_CHECK}C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe $DEFINES $INCLUDES $FLAGS /fo $out $in
   description = Building RC object $out
 
 
@@ -141,7 +141,7 @@ rule RC_COMPILER__glew_unscanned_Debug
 # Rule for linking C shared library.
 
 rule C_SHARED_LIBRARY_LINKER__glew_Debug
-  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E vs_link_dll --msvc-ver=1944 --intdir=$OBJECT_DIR --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt="D:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-mt.exe" --manifests $MANIFESTS -- "D:\Visual Studio\VC\Tools\Llvm\x64\bin\lld-link.exe" /nologo $in  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /dll /version:2.2 $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
+  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && "E:\Visual Studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_dll --msvc-ver=1944 --intdir=$OBJECT_DIR --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt="E:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-mt.exe" --manifests $MANIFESTS -- "E:\Visual Studio\VC\Tools\Llvm\x64\bin\lld-link.exe" /nologo $in  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /dll /version:2.2 $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking C shared library $TARGET_FILE
   restat = $RESTAT
 
@@ -151,7 +151,7 @@ rule C_SHARED_LIBRARY_LINKER__glew_Debug
 
 rule C_COMPILER__glew_s_unscanned_Debug
   deps = msvc
-  command = ${LAUNCHER}${CODE_CHECK}"D:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
+  command = ${LAUNCHER}${CODE_CHECK}"E:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
   description = Building C object $out
 
 
@@ -161,7 +161,7 @@ rule C_COMPILER__glew_s_unscanned_Debug
 rule RC_COMPILER__glew_s_unscanned_Debug
   depfile = $DEP_FILE
   deps = gcc
-  command = C:/PROGRA~1/CMake/bin/cmcldeps.exe RC $in $DEP_FILE $out "Note: including file: " "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-cl.exe" ${LAUNCHER}${CODE_CHECK}C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe $DEFINES $INCLUDES $FLAGS /fo $out $in
+  command = E:/Visual Studio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmcldeps.exe RC $in $DEP_FILE $out "Note: including file: " "E:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-cl.exe" ${LAUNCHER}${CODE_CHECK}C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe $DEFINES $INCLUDES $FLAGS /fo $out $in
   description = Building RC object $out
 
 
@@ -169,7 +169,7 @@ rule RC_COMPILER__glew_s_unscanned_Debug
 # Rule for linking C static library.
 
 rule C_STATIC_LIBRARY_LINKER__glew_s_Debug
-  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && "D:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-lib.exe" /nologo $LINK_FLAGS /out:$TARGET_FILE $in && $POST_BUILD"
+  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && "E:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-lib.exe" /nologo $LINK_FLAGS /out:$TARGET_FILE $in && $POST_BUILD"
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
 
@@ -179,7 +179,7 @@ rule C_STATIC_LIBRARY_LINKER__glew_s_Debug
 
 rule C_COMPILER__glewinfo_unscanned_Debug
   deps = msvc
-  command = ${LAUNCHER}${CODE_CHECK}"D:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
+  command = ${LAUNCHER}${CODE_CHECK}"E:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
   description = Building C object $out
 
 
@@ -189,7 +189,7 @@ rule C_COMPILER__glewinfo_unscanned_Debug
 rule RC_COMPILER__glewinfo_unscanned_Debug
   depfile = $DEP_FILE
   deps = gcc
-  command = C:/PROGRA~1/CMake/bin/cmcldeps.exe RC $in $DEP_FILE $out "Note: including file: " "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-cl.exe" ${LAUNCHER}${CODE_CHECK}C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe $DEFINES $INCLUDES $FLAGS /fo $out $in
+  command = E:/Visual Studio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmcldeps.exe RC $in $DEP_FILE $out "Note: including file: " "E:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-cl.exe" ${LAUNCHER}${CODE_CHECK}C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe $DEFINES $INCLUDES $FLAGS /fo $out $in
   description = Building RC object $out
 
 
@@ -197,7 +197,7 @@ rule RC_COMPILER__glewinfo_unscanned_Debug
 # Rule for linking C executable.
 
 rule C_EXECUTABLE_LINKER__glewinfo_Debug
-  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=$OBJECT_DIR --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt="D:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-mt.exe" --manifests $MANIFESTS -- "D:\Visual Studio\VC\Tools\Llvm\x64\bin\lld-link.exe" /nologo $in  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /version:0.0 $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
+  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && "E:\Visual Studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=$OBJECT_DIR --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt="E:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-mt.exe" --manifests $MANIFESTS -- "E:\Visual Studio\VC\Tools\Llvm\x64\bin\lld-link.exe" /nologo $in  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /version:0.0 $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking C executable $TARGET_FILE
   restat = $RESTAT
 
@@ -207,7 +207,7 @@ rule C_EXECUTABLE_LINKER__glewinfo_Debug
 
 rule C_COMPILER__visualinfo_unscanned_Debug
   deps = msvc
-  command = ${LAUNCHER}${CODE_CHECK}"D:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
+  command = ${LAUNCHER}${CODE_CHECK}"E:\Visual Studio\VC\Tools\Llvm\x64\bin\clang-cl.exe"  /nologo $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB -c -- $in
   description = Building C object $out
 
 
@@ -217,7 +217,7 @@ rule C_COMPILER__visualinfo_unscanned_Debug
 rule RC_COMPILER__visualinfo_unscanned_Debug
   depfile = $DEP_FILE
   deps = gcc
-  command = C:/PROGRA~1/CMake/bin/cmcldeps.exe RC $in $DEP_FILE $out "Note: including file: " "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-cl.exe" ${LAUNCHER}${CODE_CHECK}C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe $DEFINES $INCLUDES $FLAGS /fo $out $in
+  command = E:/Visual Studio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmcldeps.exe RC $in $DEP_FILE $out "Note: including file: " "E:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-cl.exe" ${LAUNCHER}${CODE_CHECK}C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe $DEFINES $INCLUDES $FLAGS /fo $out $in
   description = Building RC object $out
 
 
@@ -225,7 +225,7 @@ rule RC_COMPILER__visualinfo_unscanned_Debug
 # Rule for linking C executable.
 
 rule C_EXECUTABLE_LINKER__visualinfo_Debug
-  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=$OBJECT_DIR --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt="D:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-mt.exe" --manifests $MANIFESTS -- "D:\Visual Studio\VC\Tools\Llvm\x64\bin\lld-link.exe" /nologo $in  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /version:0.0 $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
+  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && "E:\Visual Studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=$OBJECT_DIR --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt="E:\Visual Studio\VC\Tools\Llvm\x64\bin\llvm-mt.exe" --manifests $MANIFESTS -- "E:\Visual Studio\VC\Tools\Llvm\x64\bin\lld-link.exe" /nologo $in  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /version:0.0 $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking C executable $TARGET_FILE
   restat = $RESTAT
 
@@ -234,7 +234,7 @@ rule C_EXECUTABLE_LINKER__visualinfo_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -SD:\Repo\OpenGL\StepByStep -BD:\Repo\OpenGL\StepByStep\build
+  command = "E:\Visual Studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SD:\Repo\OpenGL\StepByStep -BD:\Repo\OpenGL\StepByStep\build
   description = Re-running CMake...
   generator = 1
 
@@ -243,7 +243,7 @@ rule RERUN_CMAKE
 # Rule for re-checking globbed directories.
 
 rule VERIFY_GLOBS
-  command = "C:\Program Files\CMake\bin\cmake.exe" -P D:\Repo\OpenGL\StepByStep\build\CMakeFiles\VerifyGlobs.cmake
+  command = "E:\Visual Studio\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P D:\Repo\OpenGL\StepByStep\build\CMakeFiles\VerifyGlobs.cmake
   description = Re-checking globbed directories...
   generator = 1
 
@@ -252,7 +252,7 @@ rule VERIFY_GLOBS
 # Rule for cleaning all built files.
 
 rule CLEAN
-  command = C:\msys64\ninja.exe $FILE_ARG -t clean $TARGETS
+  command = "E:\Visual Studio\Tools\ninja.exe" $FILE_ARG -t clean $TARGETS
   description = Cleaning all built files...
 
 
@@ -260,6 +260,6 @@ rule CLEAN
 # Rule for printing all primary targets available.
 
 rule HELP
-  command = C:\msys64\ninja.exe -t targets
+  command = "E:\Visual Studio\Tools\ninja.exe" -t targets
   description = All primary targets available:
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "glm/trigonometric.hpp"
+#include <iostream>
 #include <ranges>
 #define GLM_ENABLE_EXPERIMENTAL
 
@@ -38,16 +39,11 @@ private:
     {
         forward = glm::normalize(forward);
 
-        right = glm::normalize(glm::cross(up, forward));
+        glm::vec3 worldUp = glm::vec3(0.0f, 1.0f, 0.0f);
+        right = glm::normalize(glm::cross(forward, worldUp));
 
         // вычисляем повторно вектор up как перпендикуляр к плоскости, заданной forward и right
         up = glm::normalize(glm::cross(forward, right));
-
-        // // Вычисление вектора right (поперечный вектор)
-        // right = glm::normalize(glm::cross(forward, glm::vec3(0.0f, 1.0f, 0.0f))); // Вектор "вправо"
-
-        // // Пересчет вектора up (чтобы избежать крена)
-        // up = glm::normalize(glm::cross(right, forward));
     }
 
 public:
@@ -127,11 +123,10 @@ public:
      */
     void rotateYaw(float degrees)
     {
-        yaw += degrees;
+        // yaw += degrees;
 
-        glm::quat orientation = glm::quat_cast(glm::yawPitchRoll(glm::radians(degrees), 0.0F, 0.0F));
-
-        forward = forward * orientation;
+        glm::vec3 worldUp = glm::vec3(0.0f, 1.0f, 0.0f);
+        forward = glm::rotate(forward, glm::radians(degrees), worldUp);
         // Ограничиваем угол, если нужно (например, 0-360), хотя GLM это выдержит
         updateCameraVectors();
         // Обновляем target для FPS-style
@@ -144,13 +139,19 @@ public:
      */
     void rotatePitch(float degrees)
     {
-        pitch += degrees;
-        glm::quat orientation = glm::quat_cast(glm::yawPitchRoll(0.0F, glm::radians(degrees), 0.0F));
-        forward = forward * orientation;
-        // Ограничение тангажа для предотвращения "переворота"
-        // forward = glm::rotateZ(forward, glm::radians(degrees));
-        // pitch = std::min(pitch, 89.0f);
-        // pitch = std::max(pitch, -89.0f);
+        glm::vec3 newForward = glm::rotate(forward, glm::radians(degrees), right);
+
+        // Проверка на ограничение тангажа (чтобы не смотреть выше 89 или ниже -89 градусов)
+        // Мы проверяем, насколько близок новый 'forward' к мировому 'up' (0, 1, 0).
+        // Если угол между ними слишком мал (близко к 0 или 180), ограничиваем.
+        // Используем скалярное произведение (dot product): cos(theta) = dot(a, b) / (|a|*|b|)
+        float dotProduct = glm::dot(glm::normalize(newForward), glm::vec3(0.0f, 1.0f, 0.0f));
+
+        // Ограничение: dotProduct должен быть в пределах [-0.999, 0.999] (угол > 0.8 градуса)
+        if (dotProduct < 0.999f && dotProduct > -0.999f)
+        {
+            forward = newForward; // Применяем вращение, только если оно безопасно
+        }
         updateCameraVectors();
         // Обновляем target для FPS-style
         target = position + forward;
