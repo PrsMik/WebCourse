@@ -1,0 +1,1185 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.26200 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-cl.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+      
+      The C compiler identification is Clang, found in:
+        D:/Repo/OpenGL/StepByStep/build/CMakeFiles/3.31.5/CompilerIdC/CMakeCCompilerId.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:1288 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Detecting C compiler /showIncludes prefix:
+        Note: including file: .\\foo.h
+        
+      Found prefix "Note: including file: "
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-cl.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
+      
+      The CXX compiler identification is Clang, found in:
+        D:/Repo/OpenGL/StepByStep/build/CMakeFiles/3.31.5/CompilerIdCXX/CMakeCXXCompilerId.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:1288 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Detecting CXX compiler /showIncludes prefix:
+        Note: including file: .\\foo.h
+        
+      Found prefix "Note: including file: "
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-anmm2v"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-anmm2v"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-anmm2v'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_1229f
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_1229f.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_1229f.dir\\ -c -- "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_1229f.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_1229f.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_1229f.exe /implib:cmTC_1229f.lib /pdb:cmTC_1229f.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console   && cd ."
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-pr6s1p"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-pr6s1p"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-pr6s1p'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_68e81
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -TP   /DWIN32 /D_WINDOWS /EHsc  /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_68e81.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_68e81.dir\\ -c -- "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_68e81.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_68e81.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_68e81.exe /implib:cmTC_68e81.lib /pdb:cmTC_68e81.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console   && cd ."
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/FeatureTesting.cmake:34 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/FeatureTesting.cmake:87 (_record_compiler_features)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Compiler/CMakeCommonCompilerMacros.cmake:124 (_record_compiler_features_cxx)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerSupport.cmake:70 (cmake_record_cxx_compile_features)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:83 (CMAKE_DETERMINE_COMPILER_SUPPORT)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compile features"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-13ftg2"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-13ftg2"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_FEATURE_TEST"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-13ftg2'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_f4cb4
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -TP   /DWIN32 /D_WINDOWS /EHsc  /Ob0 /Od /RTC1 -MDd -Zi   -std:c++14 /showIncludes /FoCMakeFiles\\cmTC_f4cb4.dir\\feature_tests.cxx.obj /FdCMakeFiles\\cmTC_f4cb4.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-13ftg2\\feature_tests.cxx
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_f4cb4.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_f4cb4.dir\\feature_tests.cxx.obj  /out:cmTC_f4cb4.exe /implib:cmTC_f4cb4.lib /pdb:cmTC_f4cb4.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/FeatureTesting.cmake:34 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/FeatureTesting.cmake:87 (_record_compiler_features)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Compiler/CMakeCommonCompilerMacros.cmake:132 (_record_compiler_features_cxx)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerSupport.cmake:70 (cmake_record_cxx_compile_features)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:83 (CMAKE_DETERMINE_COMPILER_SUPPORT)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compile features"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-93dvzq"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-93dvzq"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_FEATURE_TEST"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-93dvzq'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_6f8d7
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -TP   /DWIN32 /D_WINDOWS /EHsc  /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_6f8d7.dir\\feature_tests.cxx.obj /FdCMakeFiles\\cmTC_6f8d7.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-93dvzq\\feature_tests.cxx
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_6f8d7.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_6f8d7.dir\\feature_tests.cxx.obj  /out:cmTC_6f8d7.exe /implib:cmTC_6f8d7.lib /pdb:cmTC_6f8d7.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "lib/SDL/cmake/sdlcpu.cmake:95 (try_compile)"
+      - "lib/SDL/CMakeLists.txt:82 (SDL_DetectTargetCPUArchitectures)"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/lib/SDL/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp"
+      binary: "D:/Repo/OpenGL/StepByStep/build/lib/SDL/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "SDL_CPU_CHECK_ALL"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/lib/SDL/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_9d8af
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_9d8af.dir\\SDL_detect_arch.c.obj /FdCMakeFiles\\cmTC_9d8af.dir\\cmTC_9d8af.pdb -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\lib\\SDL\\CMakeFiles\\CMakeTmp\\SDL_detect_arch.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-lib.exe" /nologo /machine:x64 /out:cmTC_9d8af.lib CMakeFiles\\cmTC_9d8af.dir\\SDL_detect_arch.c.obj && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/cmake/PreseedMSVCCache.cmake:3 (check_c_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:431 (SDL_Preseed_CMakeCache)"
+    checks:
+      - "Performing Test CAN_PRESEED"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-viz0dx"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-viz0dx"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "CAN_PRESEED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-viz0dx'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_f7bf5
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DCAN_PRESEED  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_f7bf5.dir\\src.c.obj /FdCMakeFiles\\cmTC_f7bf5.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-viz0dx\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_f7bf5.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_f7bf5.dir\\src.c.obj  /out:cmTC_f7bf5.exe /implib:cmTC_f7bf5.lib /pdb:cmTC_f7bf5.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:57 (check_c_compiler_flag)"
+      - "lib/SDL/CMakeLists.txt:460 (SDL_AddCommonCompilerFlags)"
+    checks:
+      - "Performing Test HAVE_GCC_WALL"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-oju9g6"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-oju9g6"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_GCC_WALL"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-oju9g6'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_60455
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_GCC_WALL  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi   -Wall /showIncludes /FoCMakeFiles\\cmTC_60455.dir\\src.c.obj /FdCMakeFiles\\cmTC_60455.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-oju9g6\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_60455.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_60455.dir\\src.c.obj  /out:cmTC_60455.exe /implib:cmTC_60455.lib /pdb:cmTC_60455.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:67 (check_c_compiler_flag)"
+      - "lib/SDL/CMakeLists.txt:460 (SDL_AddCommonCompilerFlags)"
+    checks:
+      - "Performing Test HAVE_GCC_WUNDEF"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-boliis"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-boliis"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_GCC_WUNDEF"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-boliis'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_b208e
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_GCC_WUNDEF  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi   -Wundef /showIncludes /FoCMakeFiles\\cmTC_b208e.dir\\src.c.obj /FdCMakeFiles\\cmTC_b208e.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-boliis\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_b208e.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_b208e.dir\\src.c.obj  /out:cmTC_b208e.exe /implib:cmTC_b208e.lib /pdb:cmTC_b208e.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:72 (check_c_compiler_flag)"
+      - "lib/SDL/CMakeLists.txt:460 (SDL_AddCommonCompilerFlags)"
+    checks:
+      - "Performing Test HAVE_GCC_WFLOAT_CONVERSION"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-gldi5w"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-gldi5w"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_GCC_WFLOAT_CONVERSION"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-gldi5w'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_28866
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_GCC_WFLOAT_CONVERSION  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi   -Wfloat-conversion /showIncludes /FoCMakeFiles\\cmTC_28866.dir\\src.c.obj /FdCMakeFiles\\cmTC_28866.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gldi5w\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_28866.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_28866.dir\\src.c.obj  /out:cmTC_28866.exe /implib:cmTC_28866.lib /pdb:cmTC_28866.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:77 (check_c_compiler_flag)"
+      - "lib/SDL/CMakeLists.txt:460 (SDL_AddCommonCompilerFlags)"
+    checks:
+      - "Performing Test HAVE_GCC_NO_STRICT_ALIASING"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-9mxefh"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-9mxefh"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_GCC_NO_STRICT_ALIASING"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-9mxefh'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_1f6c9
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_GCC_NO_STRICT_ALIASING  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi   -fno-strict-aliasing /showIncludes /FoCMakeFiles\\cmTC_1f6c9.dir\\src.c.obj /FdCMakeFiles\\cmTC_1f6c9.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-9mxefh\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_1f6c9.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_1f6c9.dir\\src.c.obj  /out:cmTC_1f6c9.exe /implib:cmTC_1f6c9.lib /pdb:cmTC_1f6c9.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:82 (check_c_compiler_flag)"
+      - "lib/SDL/CMakeLists.txt:460 (SDL_AddCommonCompilerFlags)"
+    checks:
+      - "Performing Test HAVE_GCC_WDOCUMENTATION"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-kk6sgi"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-kk6sgi"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_GCC_WDOCUMENTATION"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-kk6sgi'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_8b4a8
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_GCC_WDOCUMENTATION  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi   -Wdocumentation /showIncludes /FoCMakeFiles\\cmTC_8b4a8.dir\\src.c.obj /FdCMakeFiles\\cmTC_8b4a8.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kk6sgi\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_8b4a8.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_8b4a8.dir\\src.c.obj  /out:cmTC_8b4a8.exe /implib:cmTC_8b4a8.lib /pdb:cmTC_8b4a8.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:93 (check_c_compiler_flag)"
+      - "lib/SDL/CMakeLists.txt:460 (SDL_AddCommonCompilerFlags)"
+    checks:
+      - "Performing Test HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-teqlxv"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-teqlxv"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-teqlxv'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_1234b
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi   -Wdocumentation-unknown-command /showIncludes /FoCMakeFiles\\cmTC_1234b.dir\\src.c.obj /FdCMakeFiles\\cmTC_1234b.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-teqlxv\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_1234b.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_1234b.dir\\src.c.obj  /out:cmTC_1234b.exe /implib:cmTC_1234b.lib /pdb:cmTC_1234b.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:104 (check_c_compiler_flag)"
+      - "lib/SDL/CMakeLists.txt:460 (SDL_AddCommonCompilerFlags)"
+    checks:
+      - "Performing Test HAVE_GCC_COMMENT_BLOCK_COMMANDS"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-snrlmk"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-snrlmk"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_GCC_COMMENT_BLOCK_COMMANDS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-snrlmk'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_97b41
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_GCC_COMMENT_BLOCK_COMMANDS  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi   -fcomment-block-commands=threadsafety /showIncludes /FoCMakeFiles\\cmTC_97b41.dir\\src.c.obj /FdCMakeFiles\\cmTC_97b41.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-snrlmk\\src.c
+        clang-cl: warning: unknown argument ignored in clang-cl: '-fcomment-block-commands=threadsafety' [-Wunknown-argument]
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_97b41.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_97b41.dir\\src.c.obj  /out:cmTC_97b41.exe /implib:cmTC_97b41.lib /pdb:cmTC_97b41.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:108 (check_c_compiler_flag)"
+      - "lib/SDL/CMakeLists.txt:460 (SDL_AddCommonCompilerFlags)"
+    checks:
+      - "Performing Test HAVE_CLANG_COMMENT_BLOCK_COMMANDS"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-x3ff27"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-x3ff27"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_CLANG_COMMENT_BLOCK_COMMANDS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-x3ff27'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_a2845
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_CLANG_COMMENT_BLOCK_COMMANDS  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi   /clang:-fcomment-block-commands=threadsafety /showIncludes /FoCMakeFiles\\cmTC_a2845.dir\\src.c.obj /FdCMakeFiles\\cmTC_a2845.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x3ff27\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_a2845.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_a2845.dir\\src.c.obj  /out:cmTC_a2845.exe /implib:cmTC_a2845.lib /pdb:cmTC_a2845.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:114 (check_c_compiler_flag)"
+      - "lib/SDL/CMakeLists.txt:460 (SDL_AddCommonCompilerFlags)"
+    checks:
+      - "Performing Test HAVE_GCC_WSHADOW"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-b1h7dl"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-b1h7dl"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_GCC_WSHADOW"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-b1h7dl'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_85721
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_GCC_WSHADOW  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi   -Wshadow /showIncludes /FoCMakeFiles\\cmTC_85721.dir\\src.c.obj /FdCMakeFiles\\cmTC_85721.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-b1h7dl\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_85721.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_85721.dir\\src.c.obj  /out:cmTC_85721.exe /implib:cmTC_85721.lib /pdb:cmTC_85721.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:119 (check_c_compiler_flag)"
+      - "lib/SDL/CMakeLists.txt:460 (SDL_AddCommonCompilerFlags)"
+    checks:
+      - "Performing Test HAVE_GCC_WUNUSED_LOCAL_TYPEDEFS"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-2s5pk0"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-2s5pk0"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_GCC_WUNUSED_LOCAL_TYPEDEFS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-2s5pk0'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_e5534
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_GCC_WUNUSED_LOCAL_TYPEDEFS  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi   -Wunused-local-typedefs /showIncludes /FoCMakeFiles\\cmTC_e5534.dir\\src.c.obj /FdCMakeFiles\\cmTC_e5534.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2s5pk0\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_e5534.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_e5534.dir\\src.c.obj  /out:cmTC_e5534.exe /implib:cmTC_e5534.lib /pdb:cmTC_e5534.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:124 (check_c_compiler_flag)"
+      - "lib/SDL/CMakeLists.txt:460 (SDL_AddCommonCompilerFlags)"
+    checks:
+      - "Performing Test HAVE_GCC_WIMPLICIT_FALLTHROUGH"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-cuv0z1"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-cuv0z1"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_GCC_WIMPLICIT_FALLTHROUGH"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-cuv0z1'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_719e8
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_GCC_WIMPLICIT_FALLTHROUGH  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi   -Wimplicit-fallthrough /showIncludes /FoCMakeFiles\\cmTC_719e8.dir\\src.c.obj /FdCMakeFiles\\cmTC_719e8.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cuv0z1\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_719e8.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_719e8.dir\\src.c.obj  /out:cmTC_719e8.exe /implib:cmTC_719e8.lib /pdb:cmTC_719e8.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:152 (check_c_compiler_flag)"
+      - "lib/SDL/CMakeLists.txt:460 (SDL_AddCommonCompilerFlags)"
+    checks:
+      - "Performing Test COMPILER_SUPPORTS_FCOLOR_DIAGNOSTICS"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-36yt46"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-36yt46"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "COMPILER_SUPPORTS_FCOLOR_DIAGNOSTICS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-36yt46'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_76133
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DCOMPILER_SUPPORTS_FCOLOR_DIAGNOSTICS  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi   -fcolor-diagnostics /showIncludes /FoCMakeFiles\\cmTC_76133.dir\\src.c.obj /FdCMakeFiles\\cmTC_76133.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-36yt46\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_76133.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_76133.dir\\src.c.obj  /out:cmTC_76133.exe /implib:cmTC_76133.lib /pdb:cmTC_76133.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/cmake/macros.cmake:304 (check_c_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:509 (check_linker_supports_version_file)"
+    checks:
+      - "Performing Test LINKER_SUPPORTS_VERSION_SCRIPT"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-ygu4nv"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-ygu4nv"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "LINKER_SUPPORTS_VERSION_SCRIPT"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-ygu4nv'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_b42e5
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DLINKER_SUPPORTS_VERSION_SCRIPT  /DWIN32 /D_WINDOWS  /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_b42e5.dir\\src.c.obj /FdCMakeFiles\\cmTC_b42e5.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ygu4nv\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_b42e5.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_b42e5.dir\\src.c.obj  /out:cmTC_b42e5.exe /implib:cmTC_b42e5.lib /pdb:cmTC_b42e5.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  -Wl,--version-script=D:/Repo/OpenGL/StepByStep/build/lib/SDL/CMakeFiles/dummy.sym  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:607 (check_c_source_compiles)"
+    checks:
+      - "Performing Test COMPILER_SUPPORTS_GCC_ATOMICS"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-69qq2k"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-69qq2k"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "COMPILER_SUPPORTS_GCC_ATOMICS"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-69qq2k'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_e2f49
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DCOMPILER_SUPPORTS_GCC_ATOMICS  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_e2f49.dir\\src.c.obj /FdCMakeFiles\\cmTC_e2f49.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-69qq2k\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_e2f49.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_e2f49.dir\\src.c.obj  /out:cmTC_e2f49.exe /implib:cmTC_e2f49.lib /pdb:cmTC_e2f49.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:629 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAVE_GCC_FVISIBILITY"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-hrejhd"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-hrejhd"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_GCC_FVISIBILITY"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-hrejhd'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_c6491
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_GCC_FVISIBILITY  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 -fvisibility=hidden -Werror /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_c6491.dir\\src.c.obj /FdCMakeFiles\\cmTC_c6491.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hrejhd\\src.c
+        FAILED: [code=1] CMakeFiles/cmTC_c6491.dir/src.c.obj 
+        "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_GCC_FVISIBILITY  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 -fvisibility=hidden -Werror /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_c6491.dir\\src.c.obj /FdCMakeFiles\\cmTC_c6491.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hrejhd\\src.c
+        clang-cl: error: unknown argument ignored in clang-cl: '-fvisibility=hidden' [-Werror,-Wunknown-argument]
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckLinkerFlag.cmake:37 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckLinkerFlag.cmake:44 (cmake_check_linker_flag)"
+      - "lib/SDL/CMakeLists.txt:658 (check_linker_flag)"
+    checks:
+      - "Performing Test LINKER_SUPPORTS_WL_NO_UNDEFINED"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-ajzxcj"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-ajzxcj"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "LINKER_SUPPORTS_WL_NO_UNDEFINED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-ajzxcj'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_1b50f
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DLINKER_SUPPORTS_WL_NO_UNDEFINED  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_1b50f.dir\\src.c.obj /FdCMakeFiles\\cmTC_1b50f.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ajzxcj\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_1b50f.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_1b50f.dir\\src.c.obj  /out:cmTC_1b50f.exe /implib:cmTC_1b50f.lib /pdb:cmTC_1b50f.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  -Wl,--no-undefined  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:173 (check_c_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:700 (check_x86_source_compiles)"
+    checks:
+      - "Performing Test COMPILER_SUPPORTS_MMX"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-f1oa8l"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-f1oa8l"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "COMPILER_SUPPORTS_MMX"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-f1oa8l'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_d9fba
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DCOMPILER_SUPPORTS_MMX  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 -mmmx /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_d9fba.dir\\src.c.obj /FdCMakeFiles\\cmTC_d9fba.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-f1oa8l\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_d9fba.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_d9fba.dir\\src.c.obj  /out:cmTC_d9fba.exe /implib:cmTC_d9fba.lib /pdb:cmTC_d9fba.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:173 (check_c_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:721 (check_x86_source_compiles)"
+    checks:
+      - "Performing Test COMPILER_SUPPORTS_SSE"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-n3yk49"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-n3yk49"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "COMPILER_SUPPORTS_SSE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-n3yk49'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_049f7
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DCOMPILER_SUPPORTS_SSE  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 -msse /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_049f7.dir\\src.c.obj /FdCMakeFiles\\cmTC_049f7.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n3yk49\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_049f7.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_049f7.dir\\src.c.obj  /out:cmTC_049f7.exe /implib:cmTC_049f7.lib /pdb:cmTC_049f7.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:173 (check_c_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:742 (check_x86_source_compiles)"
+    checks:
+      - "Performing Test COMPILER_SUPPORTS_SSE2"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-mkgcpb"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-mkgcpb"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "COMPILER_SUPPORTS_SSE2"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-mkgcpb'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_0c999
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DCOMPILER_SUPPORTS_SSE2  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 -msse2 /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_0c999.dir\\src.c.obj /FdCMakeFiles\\cmTC_0c999.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mkgcpb\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_0c999.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_0c999.dir\\src.c.obj  /out:cmTC_0c999.exe /implib:cmTC_0c999.lib /pdb:cmTC_0c999.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:173 (check_c_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:763 (check_x86_source_compiles)"
+    checks:
+      - "Performing Test COMPILER_SUPPORTS_SSE3"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-1vay93"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-1vay93"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "COMPILER_SUPPORTS_SSE3"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-1vay93'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_21ad9
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DCOMPILER_SUPPORTS_SSE3  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 -msse3 /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_21ad9.dir\\src.c.obj /FdCMakeFiles\\cmTC_21ad9.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1vay93\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_21ad9.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_21ad9.dir\\src.c.obj  /out:cmTC_21ad9.exe /implib:cmTC_21ad9.lib /pdb:cmTC_21ad9.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:173 (check_c_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:784 (check_x86_source_compiles)"
+    checks:
+      - "Performing Test COMPILER_SUPPORTS_SSE4_1"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-r3qtcm"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-r3qtcm"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "COMPILER_SUPPORTS_SSE4_1"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-r3qtcm'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_6f1de
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DCOMPILER_SUPPORTS_SSE4_1  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 -msse4.1 /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_6f1de.dir\\src.c.obj /FdCMakeFiles\\cmTC_6f1de.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r3qtcm\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_6f1de.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_6f1de.dir\\src.c.obj  /out:cmTC_6f1de.exe /implib:cmTC_6f1de.lib /pdb:cmTC_6f1de.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:173 (check_c_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:805 (check_x86_source_compiles)"
+    checks:
+      - "Performing Test COMPILER_SUPPORTS_SSE4_2"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-0dwde8"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-0dwde8"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "COMPILER_SUPPORTS_SSE4_2"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-0dwde8'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_8b38b
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DCOMPILER_SUPPORTS_SSE4_2  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 -msse4.2 /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_8b38b.dir\\src.c.obj /FdCMakeFiles\\cmTC_8b38b.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0dwde8\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_8b38b.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_8b38b.dir\\src.c.obj  /out:cmTC_8b38b.exe /implib:cmTC_8b38b.lib /pdb:cmTC_8b38b.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:173 (check_c_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:823 (check_x86_source_compiles)"
+    checks:
+      - "Performing Test COMPILER_SUPPORTS_AVX"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-ash3e9"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-ash3e9"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "COMPILER_SUPPORTS_AVX"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-ash3e9'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_01120
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DCOMPILER_SUPPORTS_AVX  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 -mavx /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_01120.dir\\src.c.obj /FdCMakeFiles\\cmTC_01120.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ash3e9\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_01120.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_01120.dir\\src.c.obj  /out:cmTC_01120.exe /implib:cmTC_01120.lib /pdb:cmTC_01120.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:173 (check_c_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:844 (check_x86_source_compiles)"
+    checks:
+      - "Performing Test COMPILER_SUPPORTS_AVX2"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-9qxyky"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-9qxyky"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "COMPILER_SUPPORTS_AVX2"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-9qxyky'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_435f1
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DCOMPILER_SUPPORTS_AVX2  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 -mavx2 /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_435f1.dir\\src.c.obj /FdCMakeFiles\\cmTC_435f1.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-9qxyky\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_435f1.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_435f1.dir\\src.c.obj  /out:cmTC_435f1.exe /implib:cmTC_435f1.lib /pdb:cmTC_435f1.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/cmake/sdlcompilers.cmake:173 (check_c_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:865 (check_x86_source_compiles)"
+    checks:
+      - "Performing Test COMPILER_SUPPORTS_AVX512F"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-caq0xn"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-caq0xn"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "COMPILER_SUPPORTS_AVX512F"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-caq0xn'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_ad54d
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DCOMPILER_SUPPORTS_AVX512F  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 -mavx512f /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_ad54d.dir\\src.c.obj /FdCMakeFiles\\cmTC_ad54d.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-caq0xn\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_ad54d.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_ad54d.dir\\src.c.obj  /out:cmTC_ad54d.exe /implib:cmTC_ad54d.lib /pdb:cmTC_ad54d.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckSymbolExists.cmake:163 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckSymbolExists.cmake:68 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "lib/SDL/CMakeLists.txt:1095 (check_symbol_exists)"
+    checks:
+      - "Looking for _copysign"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-z5wdae"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-z5wdae"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "LIBC_HAS__COPYSIGN"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-z5wdae'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_1ebb7
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo   /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_1ebb7.dir\\CheckSymbolExists.c.obj /FdCMakeFiles\\cmTC_1ebb7.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-z5wdae\\CheckSymbolExists.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_1ebb7.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_1ebb7.dir\\CheckSymbolExists.c.obj  /out:cmTC_1ebb7.exe /implib:cmTC_1ebb7.lib /pdb:cmTC_1ebb7.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckSymbolExists.cmake:163 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckSymbolExists.cmake:68 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "lib/SDL/CMakeLists.txt:1095 (check_symbol_exists)"
+    checks:
+      - "Looking for _fseeki64"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-yv0gjr"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-yv0gjr"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "LIBC_HAS__FSEEKI64"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-yv0gjr'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_d2e5a
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo   /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_d2e5a.dir\\CheckSymbolExists.c.obj /FdCMakeFiles\\cmTC_d2e5a.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yv0gjr\\CheckSymbolExists.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_d2e5a.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_d2e5a.dir\\CheckSymbolExists.c.obj  /out:cmTC_d2e5a.exe /implib:cmTC_d2e5a.lib /pdb:cmTC_d2e5a.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:2216 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAVE_GAMEINPUT_H"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-oey0sa"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-oey0sa"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_GAMEINPUT_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-oey0sa'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_5a02f
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_GAMEINPUT_H  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_5a02f.dir\\src.c.obj /FdCMakeFiles\\cmTC_5a02f.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-oey0sa\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_5a02f.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_5a02f.dir\\src.c.obj  /out:cmTC_5a02f.exe /implib:cmTC_5a02f.lib /pdb:cmTC_5a02f.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "lib/SDL/CMakeLists.txt:2222 (check_include_file)"
+    checks:
+      - "Looking for dxgi1_5.h"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-vm0wy8"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-vm0wy8"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_DXGI1_5_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-vm0wy8'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_6eee2
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo   /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_6eee2.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_6eee2.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vm0wy8\\CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_6eee2.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_6eee2.dir\\CheckIncludeFile.c.obj  /out:cmTC_6eee2.exe /implib:cmTC_6eee2.lib /pdb:cmTC_6eee2.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckIncludeFile.cmake:99 (try_compile)"
+      - "lib/SDL/CMakeLists.txt:2223 (check_include_file)"
+    checks:
+      - "Looking for dxgi1_6.h"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-n0as3t"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-n0as3t"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_DXGI1_6_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-n0as3t'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_3458d
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo   /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_3458d.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_3458d.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-n0as3t\\CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_3458d.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_3458d.dir\\CheckIncludeFile.c.obj  /out:cmTC_3458d.exe /implib:cmTC_3458d.lib /pdb:cmTC_3458d.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "lib/SDL/CMakeLists.txt:2230 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAVE_MFAPI_H"
+    directories:
+      source: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-g4zjz0"
+      binary: "D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-g4zjz0"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "D:/Visual Studio/VC/Tools/Llvm/x64/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/Repo/OpenGL/StepByStep/lib/SDL/cmake"
+    buildResult:
+      variable: "HAVE_MFAPI_H"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Repo/OpenGL/StepByStep/build/CMakeFiles/CMakeScratch/TryCompile-g4zjz0'
+        
+        Run Build Command(s): C:/msys64/ninja.exe -v cmTC_3c391
+        [1/2] "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe"  /nologo -DHAVE_MFAPI_H  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Ob0 /Od /RTC1 -MDd -Zi /showIncludes /FoCMakeFiles\\cmTC_3c391.dir\\src.c.obj /FdCMakeFiles\\cmTC_3c391.dir\\ -c -- D:\\Repo\\OpenGL\\StepByStep\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g4zjz0\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_3c391.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt="D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\llvm-mt.exe" --manifests  -- "D:\\Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\lld-link.exe" /nologo CMakeFiles\\cmTC_3c391.dir\\src.c.obj  /out:cmTC_3c391.exe /implib:cmTC_3c391.lib /pdb:cmTC_3c391.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+...
