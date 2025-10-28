@@ -12,9 +12,47 @@ add_subdirectory(lib/SDL EXCLUDE_FROM_ALL)
 
 find_package(OpenGL REQUIRED)
 
-set(BUILD_SHARED_LIBS ON CACHE BOOL "Build shared GLEW library" FORCE) 
-set(GLEW_BUILD_TESTS OFF CACHE BOOL "Disable GLEW tests" FORCE)
-add_subdirectory(lib/glew-2.2.0/build/cmake)
+# 1. Определяем корневой каталог GLEW
+set(GLEW_ROOT_DIR "${PROJECT_SOURCE_DIR}/lib/glew")
+
+# 2. Определяем путь к одному из ключевых сгенерированных файлов
+set(GENERATED_HEADER "${GLEW_ROOT_DIR}/include/GL/wglew.h")
+
+# 3. Проверяем, существует ли ключевой файл. Если нет, запускаем make extensions.
+if(NOT EXISTS ${GENERATED_HEADER})
+    message(STATUS "Сгенерированный файл GLEW (${GENERATED_HEADER}) отсутствует. Запуск make extensions...")
+
+    # Находим команду make
+    find_program(MAKE_COMMAND make)
+
+    if(MAKE_COMMAND)
+        # Запускаем команду для генерации, используя вашу специфическую рабочую команду
+        execute_process(
+            COMMAND ${MAKE_COMMAND} PYTHON=python3 extensions
+            WORKING_DIRECTORY "${GLEW_ROOT_DIR}"
+            RESULT_VARIABLE MAKE_RESULT
+            OUTPUT_VARIABLE MAKE_OUTPUT
+            ERROR_VARIABLE MAKE_ERROR
+        )
+
+        if(NOT MAKE_RESULT EQUAL 0)
+            message(FATAL_ERROR 
+                "Не удалось сгенерировать исходники GLEW (make PYTHON=python3 extensions).\n"
+                "Код ошибки: ${MAKE_RESULT}\n"
+                "Вывод:\n${MAKE_OUTPUT}\n"
+                "Ошибка:\n${MAKE_ERROR}\n"
+                "Убедитесь, что 'make' доступен в PATH."
+            )
+        else()
+            message(STATUS "Генерация исходников GLEW завершена успешно.")
+        endif()
+    else()
+        message(FATAL_ERROR "Команда 'make' не найдена. Установите 'make' (напр., MinGW/MSYS2) и добавьте его в PATH.")
+    endif()
+else()
+    message(STATUS "Сгенерированные исходники GLEW уже существуют. Пропуск генерации.")
+endif()
+add_subdirectory(lib/glew/build/cmake)
 
 set(GLM_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/lib/glm")
 
@@ -54,7 +92,7 @@ endif()
 # Add the directory containing the generated header to your include paths
 target_include_directories(Wordle++ PRIVATE 
     "${CMAKE_CURRENT_BINARY_DIR}"
-    "${PROJECT_SOURCE_DIR}/lib/glew-2.2.0/include"
+    "${PROJECT_SOURCE_DIR}/lib/glew/include"
     "${GLM_INCLUDE_DIR}"
 )
 # Pass the actual path to the compiler as a preprocessor definition
