@@ -55,10 +55,25 @@ int main()
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 6);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4); // For 4x MSAA
 
-    SDL_Window *mainWindow = SDL_CreateWindow("Hello, OpenGL!", 800, 800, SDL_WINDOW_OPENGL);
+    const SDL_DisplayMode *display = SDL_GetCurrentDisplayMode(SDL_GetDisplays(nullptr)[0]);
+    int displayWidth = display->w;
+    int displayHeight = display->h;
+
+    float aspect = static_cast<float>(displayWidth) / displayHeight;
+
+    int windowWidth = 800;
+    int windowHeight = windowWidth / aspect;
+
+    std::cout << displayWidth << "/" << displayHeight << "=" << aspect << "\n";
+
+    SDL_Window *mainWindow = SDL_CreateWindow("Hello, OpenGL!", windowWidth, windowHeight,
+                                              SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
     SDL_GLContext context = SDL_GL_CreateContext(mainWindow);
     SDL_GL_MakeCurrent(mainWindow, context);
+    SDL_GL_SetSwapInterval(1);
 
     glewExperimental = true;
     if (glewInit() != GLEW_OK)
@@ -77,6 +92,7 @@ int main()
     SDL_Event event;
 
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_MULTISAMPLE);
 
     glDepthFunc(GL_LESS);
 
@@ -99,19 +115,19 @@ int main()
     float speed = 0.2f;       // Немного увеличим для заметного эффекта
     float rotateSpeed = 1.2f; // Немного увеличим для заметного эффекта
 
-    glm::mat4 projectionMartix = glm::perspective(glm::radians(45.0F), 1.0F / 1.0F, 0.1F, 100.0F);
+    glm::mat4 projectionMartix = glm::perspective(glm::radians(45.0F), aspect, 0.1F, 100.0F);
 
     glm::mat4 viewMatrix = camera.getViewMatrix();
-    // glm::mat4 viewMatrix = glm::lookAt(
-    //     glm::vec3(4, 3, 3),
-    //     glm::vec3(0, 0, 0),
-    //     glm::vec3(0, 1, 0));
-    glm::mat4 modelMatrix = glm::mat4(1.0F);
 
-    glm::mat4 MVPMatrix = projectionMartix * viewMatrix * modelMatrix;
+    glm::mat4 modelMatrix1 = glm::mat4(1.0F);
 
-    const GLfloat *vertexData = getCubeData();
-    const GLfloat *colorData = getColorData();
+    // Матрица модели для второго куба (например, сдвинутого по оси X на -4.0)
+    glm::mat4 modelMatrix2 = glm::translate(glm::mat4(1.0f), glm::vec3(-4.0f, -4.0f, -4.0f));
+
+    glm::mat4 MVPMatrix = projectionMartix * viewMatrix * modelMatrix1;
+
+    const GLfloat *firstVertexData = getCubeData();
+    const GLfloat *firstColorData = getColorData();
 
     // Размер в байтах также можно получить из заголовка
     size_t vertexDataSize = CUBE_DATA_SIZE_BYTES;
@@ -120,26 +136,25 @@ int main()
     // ... ваш код для GL (например, glBufferData)
     // glBufferData(GL_ARRAY_BUFFER, size_bytes, data, GL_STATIC_DRAW);
 
-    GLuint vertexBuffer;
+    GLuint firstVertexBuffer;
+    GLuint firstColorBuffer;
 
-    glGenBuffers(1, &vertexBuffer);
+    glGenBuffers(1, &firstVertexBuffer);
 
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, firstVertexBuffer);
 
     glBufferData(GL_ARRAY_BUFFER,
                  vertexDataSize,
-                 vertexData,
+                 firstVertexData,
                  GL_STATIC_DRAW);
 
-    GLuint colorBuffer;
+    glGenBuffers(1, &firstColorBuffer);
 
-    glGenBuffers(1, &colorBuffer);
-
-    glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, firstColorBuffer);
 
     glBufferData(GL_ARRAY_BUFFER,
                  colorDataSize,
-                 colorData,
+                 firstColorData,
                  GL_STATIC_DRAW);
 
     const float mouseSensitivity = 0.1f;
@@ -205,6 +220,15 @@ int main()
             {
                 return 0;
             }
+            if (event.type == SDL_EVENT_WINDOW_RESIZED)
+            {
+                int new_width = event.window.data1;
+                int new_height = event.window.data2;
+                aspect = static_cast<float>(new_width) / new_height;
+                std::cout << new_width << "/" << new_height << "=" << aspect << "\n";
+                projectionMartix = glm::perspective(glm::radians(45.0F), 1.6F, 0.1F, 100.0F);
+                glViewport(0, 0, new_width, new_height);
+            }
             if (event.type == SDL_EVENT_KEY_DOWN)
             {
                 if (event.key.key == SDLK_ESCAPE)
@@ -227,42 +251,46 @@ int main()
 
         viewMatrix = camera.getViewMatrix();
 
-        MVPMatrix = projectionMartix * viewMatrix * modelMatrix;
-
         glUseProgram(programID);
+
+        glEnableVertexAttribArray(0);
+        glBindBuffer(GL_ARRAY_BUFFER, firstVertexBuffer);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void *)0);
+
+        glEnableVertexAttribArray(1);
+        glBindBuffer(GL_ARRAY_BUFFER, firstColorBuffer);
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (void *)0);
+
+        glm::mat4 MVPMatrix1 = projectionMartix * viewMatrix * modelMatrix1;
 
         glUniformMatrix4fv(matrixID,
                            1,
                            GL_FALSE,
-                           &MVPMatrix[0][0]);
+                           &MVPMatrix1[0][0]);
 
-        glEnableVertexAttribArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-        glVertexAttribPointer(0,
-                              3,
-                              GL_FLOAT,
-                              GL_FALSE,
-                              0,
-                              (void *)0);
+        glDrawArrays(GL_TRIANGLES, 0, 12 * 3);
 
-        glEnableVertexAttribArray(1);
-        glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
-        glVertexAttribPointer(
-            1,
-            3,
-            GL_FLOAT,
-            GL_FALSE,
-            0,
-            (void *)0);
+        glm::mat4 MVPMatrix2 = projectionMartix * viewMatrix * modelMatrix2;
+
+        glUniformMatrix4fv(matrixID,
+                           1,
+                           GL_FALSE,
+                           &MVPMatrix2[0][0]);
 
         glDrawArrays(GL_TRIANGLES, 0, 12 * 3);
 
         glDisableVertexAttribArray(0);
+        glDisableVertexAttribArray(1);
 
         SDL_GL_SwapWindow(mainWindow);
 
         SDL_Delay(10);
     }
+
+    glDeleteBuffers(1, &firstVertexBuffer);
+    glDeleteBuffers(1, &firstColorBuffer);
+    glDeleteVertexArrays(1, &vertexArrayID);
+    glDeleteProgram(programID);
 
     SDL_GL_DestroyContext(context);
     SDL_DestroyWindow(mainWindow);
