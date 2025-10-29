@@ -5,11 +5,12 @@
 #include "SDL3/SDL_mouse.h"
 #include "SDL3/SDL_timer.h"
 #include "SDL3/SDL_video.h"
-#include <GL/glew.h>  // Подключение GLEW
 #include <SDL3/SDL.h> // Предполагаем, что вы используете SDL3
 #include <cmath>
 #include <cstdlib>
+#include <glad/gl.h> // Подключение GLEW
 #include <glm/glm.hpp>
+
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/transform.hpp>
@@ -75,12 +76,21 @@ int main()
     SDL_GL_MakeCurrent(mainWindow, context);
     SDL_GL_SetSwapInterval(1);
 
-    glewExperimental = true;
-    if (glewInit() != GLEW_OK)
+    if (gladLoadGL((GLADloadfunc)SDL_GL_GetProcAddress) == 0)
     {
         std::cout << "Failed to init glew!";
         return 1;
     }
+
+    const GLubyte *vendor = glGetString(GL_VENDOR);
+    const GLubyte *renderer = glGetString(GL_RENDERER);
+    const GLubyte *version = glGetString(GL_VERSION);
+    const GLubyte *shadingLanguageVersion = glGetString(GL_SHADING_LANGUAGE_VERSION);
+
+    std::cout << "OpenGL Vendor: " << vendor << std::endl;
+    std::cout << "OpenGL Renderer: " << renderer << std::endl;
+    std::cout << "OpenGL Version: " << version << std::endl;
+    std::cout << "OpenGL Shading Language Version: " << shadingLanguageVersion << std::endl;
 
     bool mouseHandle = true;
 

@@ -1,12 +1,13 @@
-#include <GL/glew.h>  // Подключение GLEW
 #include <SDL3/SDL.h> // Предполагаем, что вы используете SDL3
 #include <format>
 #include <fstream>
+#include <glad/gl.h> // Подключение GLEW
 #include <glm/glm.hpp>
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
+
 
 static GLuint LoadShaders(const char *vertexFilePath,
                           const char *fragmentFilePath)

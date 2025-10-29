@@ -12,47 +12,17 @@ add_subdirectory(lib/SDL EXCLUDE_FROM_ALL)
 
 find_package(OpenGL REQUIRED)
 
-# 1. Определяем корневой каталог GLEW
-set(GLEW_ROOT_DIR "${PROJECT_SOURCE_DIR}/lib/glew")
+set(GLAD_ROOT_DIR "${PROJECT_SOURCE_DIR}/lib/glad")
 
-# 2. Определяем путь к одному из ключевых сгенерированных файлов
-set(GENERATED_HEADER "${GLEW_ROOT_DIR}/include/GL/wglew.h")
+add_subdirectory(lib/glad/cmake)
 
-# 3. Проверяем, существует ли ключевой файл. Если нет, запускаем make extensions.
-if(NOT EXISTS ${GENERATED_HEADER})
-    message(STATUS "Сгенерированный файл GLEW (${GENERATED_HEADER}) отсутствует. Запуск make extensions...")
+glad_add_library(
+    glad_opengl 
+    STATIC 
+    API gl:core=4.6 
+    REPRODUCIBLE
+)
 
-    # Находим команду make
-    find_program(MAKE_COMMAND make)
-
-    if(MAKE_COMMAND)
-        # Запускаем команду для генерации, используя вашу специфическую рабочую команду
-        execute_process(
-            COMMAND ${MAKE_COMMAND} PYTHON=python3 extensions
-            WORKING_DIRECTORY "${GLEW_ROOT_DIR}"
-            RESULT_VARIABLE MAKE_RESULT
-            OUTPUT_VARIABLE MAKE_OUTPUT
-            ERROR_VARIABLE MAKE_ERROR
-        )
-
-        if(NOT MAKE_RESULT EQUAL 0)
-            message(FATAL_ERROR 
-                "Не удалось сгенерировать исходники GLEW (make PYTHON=python3 extensions).\n"
-                "Код ошибки: ${MAKE_RESULT}\n"
-                "Вывод:\n${MAKE_OUTPUT}\n"
-                "Ошибка:\n${MAKE_ERROR}\n"
-                "Убедитесь, что 'make' доступен в PATH."
-            )
-        else()
-            message(STATUS "Генерация исходников GLEW завершена успешно.")
-        endif()
-    else()
-        message(FATAL_ERROR "Команда 'make' не найдена. Установите 'make' (напр., MinGW/MSYS2) и добавьте его в PATH.")
-    endif()
-else()
-    message(STATUS "Сгенерированные исходники GLEW уже существуют. Пропуск генерации.")
-endif()
-add_subdirectory(lib/glew/build/cmake)
 
 set(GLM_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/lib/glm")
 
@@ -92,7 +62,7 @@ endif()
 # Add the directory containing the generated header to your include paths
 target_include_directories(Wordle++ PRIVATE 
     "${CMAKE_CURRENT_BINARY_DIR}"
-    "${PROJECT_SOURCE_DIR}/lib/glew/include"
+    "${PROJECT_SOURCE_DIR}/lib/glad/include"
     "${GLM_INCLUDE_DIR}"
 )
 # Pass the actual path to the compiler as a preprocessor definition
@@ -103,31 +73,11 @@ target_compile_definitions(Wordle++
     SHADERS_DIR="${SHADERS_DIR}"
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3 OpenGL::GL glew)
+target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3 OpenGL::GL glad_opengl)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
-
-if(WIN32 AND (NOT GLEW_STATIC))
-    # GLEW_DLL_SOURCE: Получаем полный путь к скомпилированной DLL (glew.dll/glew32.dll).
-    # <TARGET_FILE:glew> — это генераторное выражение, которое надежно находит выходной файл цели 'glew',
-    # созданной подпроектом.
-    set(GLEW_DLL_SOURCE $<TARGET_FILE:glew>)
-    
-    # GLEW_DLL_DESTINATION: Получаем путь к папке, куда был собран исполняемый файл.
-    set(GLEW_DLL_DESTINATION $<TARGET_FILE_DIR:${PROJECT_NAME}>)
-
-    # Добавляем команду после сборки Wordle++, чтобы скопировать DLL
-    add_custom_command(
-        TARGET ${PROJECT_NAME} 
-        POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${GLEW_DLL_SOURCE}"
-            "${GLEW_DLL_DESTINATION}"
-        COMMENT "Copying GLEW DLL to executable directory"
-    )
-endif()
 
 if(CMAKE_EXPORT_COMPILE_COMMANDS)
     set(COMPILE_COMMANDS_PATH "${CMAKE_BINARY_DIR}/compile_commands.json")

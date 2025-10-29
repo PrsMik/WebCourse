@@ -1,7 +1,7 @@
 #pragma once
 
 #include "glm/vec3.hpp"
-#include <GL/glew.h>
+#include <glad/gl.h>
 static const glm::vec3 redColor = {1.0f, 0.0f, 0.0f};
 static const glm::vec3 greenColor = {0.0f, 1.0f, 0.0f};
 static const glm::vec3 blueColor = {0.0f, 0.0f, 1.0f};
