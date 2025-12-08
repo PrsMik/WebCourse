@@ -4,29 +4,28 @@ project(Wordle++ VERSION 0.1.0 LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 
+# --- ВАЖНОЕ ИСПРАВЛЕНИЕ ---
+# Отключаем сканирование модулей по умолчанию.
+# Это спасет ImGui и SDL от ошибок "compiler does not provide a way...".
+set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
-# This assumes the SDL source is available in lib/SDL
+# --- ЗАВИСИМОСТИ ---
+# SDL3
 add_subdirectory(lib/SDL EXCLUDE_FROM_ALL)
 
+# OpenGL
 find_package(OpenGL REQUIRED)
 
+# GLAD
 set(GLAD_ROOT_DIR "${PROJECT_SOURCE_DIR}/lib/glad")
-
 add_subdirectory(lib/glad/cmake)
+glad_add_library(glad_opengl STATIC API gl:core=4.6 REPRODUCIBLE)
 
-glad_add_library(
-    glad_opengl 
-    STATIC 
-    API gl:core=4.6 
-    REPRODUCIBLE
-)
-
-# --- IMGUI SETUP (ИСПРАВЛЕНИЕ ОШИБКИ) ---
+# ImGui
 set(IMGUI_DIR "${PROJECT_SOURCE_DIR}/lib/imgui")
-
-# 1. Список исходных файлов ImGui (Ядро + Бэкенды)
 set(IMGUI_SOURCES
     ${IMGUI_DIR}/imgui.cpp
     ${IMGUI_DIR}/imgui_demo.cpp
@@ -36,67 +35,34 @@ set(IMGUI_SOURCES
     ${IMGUI_DIR}/backends/imgui_impl_sdl3.cpp
     ${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp
 )
-
-# 2. Создаем статическую библиотеку для ImGui
 add_library(imgui STATIC ${IMGUI_SOURCES})
-
-# 3. Указываем пути к заголовкам для самой библиотеки imgui
 target_include_directories(imgui PUBLIC ${IMGUI_DIR})
-
-# 4. Линкуем зависимости, нужные бэкендам ImGui (SDL для sdl3_impl, GLAD для opengl3_impl)
 target_link_libraries(imgui PUBLIC SDL3::SDL3 glad_opengl OpenGL::GL)
-# ----------------------------------------
+
+# Убеждаемся, что для ImGui сканирование точно выключено
+set_target_properties(imgui PROPERTIES CXX_SCAN_FOR_MODULES OFF)
 
 set(GLM_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/lib/glm")
 
-# --- ДОБАВЛЕНИЕ ASSIMP ---
+# Assimp
 add_subdirectory(lib/assimp)
-
-# --- ИСПРАВЛЕНИЕ ОШИБОК КОМПИЛЯЦИИ ASSIMP С CLANG-CL (-Werror) ---
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    message(STATUS "Clang detected. Applying C/CXX warning suppressions to assimp targets.")
-    
+    # Подавление варнингов (ваш блок кода)
     set(ASSIMP_CLANG_SUPPRESS_FLAGS 
-        -Wno-unsafe-buffer-usage
-        -Wno-switch-default
-        -Wno-format
-        -Wno-unreachable-code-break
-        -Wno-deprecated-copy
-        -Wno-unused-member-function
-        -Wno-deprecated-non-prototype 
-        -Wno-padded
-        -Wno-nrvo
-        -Wno-unique-object-duplication
-        -Wno-missing-noreturn
-        -Wno-unnecessary-virtual-specifier
-        -Wno-c++-keyword
-        -Wno-character-conversion
+        -Wno-unsafe-buffer-usage -Wno-switch-default -Wno-format 
+        -Wno-unreachable-code-break -Wno-deprecated-copy -Wno-unused-member-function
+        -Wno-deprecated-non-prototype -Wno-padded -Wno-nrvo 
+        -Wno-unique-object-duplication -Wno-missing-noreturn 
+        -Wno-unnecessary-virtual-specifier -Wno-c++-keyword -Wno-character-conversion
     )
- 
-    set(ASSIMP_CLANG_OPTIONS 
-        $<$<OR:$<COMPILE_LANGUAGE:CXX>,$<COMPILE_LANGUAGE:C>>:${ASSIMP_CLANG_SUPPRESS_FLAGS}>
-    )
-
-    target_compile_options(assimp PRIVATE ${ASSIMP_CLANG_OPTIONS})
-    
-    # Исправление для unit тестов assimp, если они собираются
+    target_compile_options(assimp PRIVATE $<$<OR:$<COMPILE_LANGUAGE:CXX>,$<COMPILE_LANGUAGE:C>>:${ASSIMP_CLANG_SUPPRESS_FLAGS}>)
     if(TARGET unit)
-        target_compile_options(unit PRIVATE ${ASSIMP_CLANG_OPTIONS})
+        target_compile_options(unit PRIVATE $<$<OR:$<COMPILE_LANGUAGE:CXX>,$<COMPILE_LANGUAGE:C>>:${ASSIMP_CLANG_SUPPRESS_FLAGS}>)
     endif()
-    
     set_property(TARGET assimp APPEND PROPERTY RC_FLAGS "-c65001")
 endif()
-# --------------------------------------------------------------------
 
-file(GLOB CONTROLLER_SOURCES CONFIGURE_DEPENDS "src/*.cpp")
-file(GLOB SHADERS CONFIGURE_DEPENDS "shaders/*.cpp")
-
-set(SOURCES
-    main.cpp
-    ${CONTROLLER_SOURCES}
-    ${SHADERS}
-)
-
+# --- КОНФИГУРАЦИЯ ---
 set(DATA_DIR "${PROJECT_SOURCE_DIR}/data")
 set(SHADERS_DIR "${PROJECT_SOURCE_DIR}/shaders")
 
@@ -106,8 +72,26 @@ configure_file(
     @ONLY
 )
 
-# Объявляем исполняемый файл
-add_executable(${PROJECT_NAME} ${SOURCES})
+# --- ОСНОВНОЙ ТАРГЕТ ---
+add_executable(${PROJECT_NAME} 
+    main.cpp
+)
+
+# Добавляем модули
+target_sources(${PROJECT_NAME} 
+    PUBLIC 
+    FILE_SET CXX_MODULES FILES
+        src/Types.ixx
+        src/Camera.ixx
+        src/Model.ixx
+        src/View.ixx
+        src/Presenter.ixx
+)
+
+# --- ВКЛЮЧАЕМ СКАНИРОВАНИЕ ТОЛЬКО ЗДЕСЬ ---
+# Включаем сканирование модулей только для нашего проекта.
+# Если вы используете Ninja, это заставит его строить граф зависимостей.
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_SCAN_FOR_MODULES ON)
 
 if(WIN32)
     if(CMAKE_SIZEOF_VOID_P EQUAL 8) 
@@ -121,21 +105,16 @@ target_include_directories(Wordle++ PRIVATE
     "${CMAKE_CURRENT_BINARY_DIR}"
     "${PROJECT_SOURCE_DIR}/lib/glad/include"
     "${GLM_INCLUDE_DIR}"
-    # Путь к ImGui уже подтянется через target_link_libraries, 
-    # но можно оставить явно, если нужно
-    "${IMGUI_DIR}" 
+    "${IMGUI_DIR}"
 )
 
 target_compile_definitions(Wordle++
     PRIVATE 
     DATA_DIR="${DATA_DIR}"
     SHADERS_DIR="${SHADERS_DIR}"
-    # Указываем ImGui использовать GLAD (иначе он может пытаться грузить стандартный GL)
     IMGUI_IMPL_OPENGL_LOADER_GLAD 
 )
 
-# --- ЛИНКОВКА ---
-# Добавили 'imgui' в список
 target_link_libraries(${PROJECT_NAME} PRIVATE 
     SDL3::SDL3 
     OpenGL::GL 
@@ -143,28 +122,3 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     assimp 
     imgui
 )
-
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
-
-if(CMAKE_EXPORT_COMPILE_COMMANDS)
-    set(COMPILE_COMMANDS_PATH "${CMAKE_BINARY_DIR}/compile_commands.json")
-    set(DESTINATION_PATH "${CMAKE_SOURCE_DIR}/compile_commands.json")
-    
-    execute_process(
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different 
-                "${COMPILE_COMMANDS_PATH}" 
-                "${DESTINATION_PATH}"
-        RESULT_VARIABLE COPY_STATUS
-    )
-    if(NOT COPY_STATUS EQUAL 0)
-        message(STATUS "Не удалось скопировать compile_commands.json в ${CMAKE_SOURCE_DIR}")
-    else()
-        message(STATUS "Исправление регистра диска в ${DESTINATION_PATH} для clangd...")
-        file(READ "${DESTINATION_PATH}" COMPILE_COMMANDS_CONTENT)
-        string(REPLACE "D:" "d:" COMPILE_COMMANDS_CONTENT "${COMPILE_COMMANDS_CONTENT}")
-        file(WRITE "${DESTINATION_PATH}" "${COMPILE_COMMANDS_CONTENT}")
-        message(STATUS "Исправление завершено.")
-    endif()
-endif()
