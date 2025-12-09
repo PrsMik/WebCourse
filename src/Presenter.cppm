@@ -1,13 +1,11 @@
 module;
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-
 #include "backends/imgui_impl_sdl3.h"
 #include <SDL3/SDL.h>
+#include <glm/glm.hpp>
 #include <iostream>
 #include <string>
-
+#include <vector>
 
 export module App.Presenter;
 
@@ -29,36 +27,55 @@ export namespace App
 
         bool isRunning = true;
         bool mouseCaptured = false;
-        float modelRotY = 0.0f;
+
+        // ИЗМЕНЕНИЕ: Теперь храним вектор вращения (X, Y, Z) в градусах
+        glm::vec3 modelRotation = glm::vec3(0.0f, 0.0f, 0.0f);
+
         TFPreset currentPreset = TFPreset::Bone;
 
         std::string fragShaderPath;
+        std::vector<VolumeMetadata> presets;
 
     public:
-        Presenter(int w, int h, int d)
-            : model(w, h, d),
-              camera(glm::vec3(0, 0, 3.5f), glm::vec3(0, 0, 0))
+        Presenter()
+            : model(), camera(glm::vec3(0, 0, 3.5f), glm::vec3(0, 0, 0))
         {
             fragShaderPath = DATA_DIR "/shaders/FragmentShader.glsl";
+
+            presets.push_back({"Male Head (CT)", DATA_DIR "/vis_male_128x256x256_uint8.raw", 128, 256, 256, DataType::UInt8});
+            presets.push_back({"Engine Block", DATA_DIR "/engine_256x256x128_uint8.raw", 256, 256, 128, DataType::UInt8});
+            presets.push_back({"Christmas Carp", DATA_DIR "/carp_256x256x512_uint16.raw", 256, 256, 512, DataType::UInt16});
         }
 
-        bool initialize(const std::string &volumePath)
+        bool initialize()
         {
-            if (!view.init(1280, 720, "MVP Raymarching"))
+            if (!view.init(1280, 720, "Volumetric Raymarching"))
                 return false;
-
-            std::cout << "Loading volume from: " << volumePath << std::endl;
-            if (!model.loadRawData(volumePath))
-            {
-                std::cerr << "CRITICAL ERROR: Failed to load volume file!" << std::endl;
-                return false;
-            }
-            model.updateTransferFunction(currentPreset);
-
-            view.setVolumeData(model.getWidth(), model.getHeight(), model.getDepth(), model.getVolumeData());
-            view.setTFData(model.getTFData());
-
+            loadVolume(presets[0]);
             return true;
+        }
+
+        void loadVolume(const VolumeMetadata &meta)
+        {
+            std::cout << "Loading: " << meta.name << "..." << std::endl;
+            if (model.loadVolume(meta))
+            {
+                model.updateTransferFunction(currentPreset);
+                view.setVolumeData(model.getWidth(), model.getHeight(), model.getDepth(), model.getVolumeData());
+                view.setTFData(model.getTFData());
+
+                // Сброс вращения при загрузке нового файла (опционально)
+                modelRotation = glm::vec3(0.0f);
+
+                if (meta.name.find("Male Head") != std::string::npos)
+                    settings.volumeScale = glm::vec3(1.0f);
+                else if (meta.name.find("Carp") != std::string::npos)
+                    settings.volumeScale = glm::vec3(1.0f, 1.0f, 2.0f);
+                else if (meta.name.find("Engine") != std::string::npos)
+                    settings.volumeScale = glm::vec3(1.0f, 1.0f, 0.5f);
+                else
+                    settings.volumeScale = glm::vec3(1.0f);
+            }
         }
 
         void run()
@@ -71,11 +88,9 @@ export namespace App
                 uint64_t now = SDL_GetTicks();
                 float dt = (now - lastTime) / 1000.0f;
                 lastTime = now;
-
                 if (dt > 0.1f)
                     dt = 0.1f;
 
-                // Сбрасываем флаг взаимодействия каждый кадр
                 bool isInteracting = false;
 
                 while (SDL_PollEvent(&event))
@@ -83,34 +98,28 @@ export namespace App
                     ImGui_ImplSDL3_ProcessEvent(&event);
                     if (event.type == SDL_EVENT_QUIT)
                         isRunning = false;
-
                     if (event.type == SDL_EVENT_WINDOW_RESIZED)
-                    {
                         view.handleResize(event.window.data1, event.window.data2);
-                    }
-
                     if (event.type == SDL_EVENT_KEY_DOWN && event.key.key == SDLK_ESCAPE)
                     {
                         mouseCaptured = !mouseCaptured;
                         SDL_SetWindowRelativeMouseMode(view.getWindow(), mouseCaptured);
                     }
-
                     if (mouseCaptured && event.type == SDL_EVENT_MOUSE_MOTION)
                     {
                         camera.rotateYaw(event.motion.xrel * 0.1f);
                         camera.rotatePitch(-event.motion.yrel * 0.1f);
-                        // Мышь двигается — значит взаимодействуем
                         isInteracting = true;
                     }
                 }
 
                 const bool *keys = SDL_GetKeyboardState(nullptr);
                 float speed = 2.0f * dt;
+                float rotSpeed = 100.0f * dt; // Скорость вращения модели
 
                 if (mouseCaptured)
                 {
-                    bool moved = false; // Локальный флаг движения
-
+                    bool moved = false;
                     if (keys[SDL_SCANCODE_W])
                     {
                         camera.moveForward(speed);
@@ -141,51 +150,72 @@ export namespace App
                         camera.moveUp(speed);
                         moved = true;
                     }
-
-                    // ИСПРАВЛЕНИЕ: isInteracting ставится true ТОЛЬКО если было реальное движение
                     if (moved)
                         isInteracting = true;
                 }
                 else
                 {
-                    // Вращение модели стрелками
+                    // --- НОВОЕ: Управление вращением модели ---
+                    // Y - Влево/Вправо
                     if (keys[SDL_SCANCODE_LEFT])
                     {
-                        modelRotY -= 50.0f * dt;
+                        modelRotation.y -= rotSpeed;
                         isInteracting = true;
                     }
                     if (keys[SDL_SCANCODE_RIGHT])
                     {
-                        modelRotY += 50.0f * dt;
+                        modelRotation.y += rotSpeed;
+                        isInteracting = true;
+                    }
+
+                    // X - Вверх/Вниз
+                    if (keys[SDL_SCANCODE_UP])
+                    {
+                        modelRotation.x -= rotSpeed;
+                        isInteracting = true;
+                    }
+                    if (keys[SDL_SCANCODE_DOWN])
+                    {
+                        modelRotation.x += rotSpeed;
+                        isInteracting = true;
+                    }
+
+                    // Z - PageUp/PageDown
+                    if (keys[SDL_SCANCODE_PAGEUP])
+                    {
+                        modelRotation.z -= rotSpeed;
+                        isInteracting = true;
+                    }
+                    if (keys[SDL_SCANCODE_PAGEDOWN])
+                    {
+                        modelRotation.z += rotSpeed;
                         isInteracting = true;
                     }
                 }
 
-                // ИСПРАВЛЕНИЕ: Логика выбора шага
                 if (settings.dynamicQuality)
-                {
-                    // Если включена динамика: при движении LQ, в покое HQ
                     settings.stepSize = isInteracting ? settings.lowQualityStep : settings.highQualityStep;
-                }
                 else
-                {
-                    // Если динамика выключена: всегда используем значение из слайдера HQ (основного)
                     settings.stepSize = settings.highQualityStep;
-                }
 
                 TFPreset oldPreset = currentPreset;
-                if (view.renderUI(settings, currentPreset, 1.0f / dt))
+                VolumeMetadata loadReq;
+                loadReq.width = 0;
+
+                // Передаем теперь вектор modelRotation
+                bool tfChanged = view.renderUI(settings, currentPreset, 1.0f / dt, presets, &loadReq, &modelRotation);
+
+                if (tfChanged)
                 {
-                    if (oldPreset != currentPreset)
-                    {
-                        model.updateTransferFunction(currentPreset);
-                        view.setTFData(model.getTFData());
-                    }
+                    model.updateTransferFunction(currentPreset);
+                    view.setTFData(model.getTFData());
                 }
 
-                view.renderFrame(camera, settings, modelRotY, fragShaderPath);
-            }
+                if (loadReq.width != 0)
+                    loadVolume(loadReq);
 
+                view.renderFrame(camera, settings, modelRotation, fragShaderPath);
+            }
             view.cleanup();
         }
     };
