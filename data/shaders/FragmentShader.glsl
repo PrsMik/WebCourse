@@ -16,7 +16,6 @@ uniform float u_StepSize;       // Шаг луча
 uniform float u_DensityThreshold; 
 uniform float u_OpacityMultiplier;
 
-// "Предохранитель" увеличен до 3000. 
 // При шаге 0.002 это позволяет пройти дистанцию 6.0 единиц (весь объем с запасом)
 const int MAX_SAFE_STEPS = 3000; 
 

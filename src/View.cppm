@@ -19,20 +19,56 @@ export module App.View;
 import App.Types;
 import App.Camera;
 
-// Данные куба
+// Проверенный массив вершин куба (TRIANGLES, 36 вершин)
+// Обход против часовой стрелки (CCW)
 static const float cubeVerts[] = {
-    // Front face
-    -1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, -1.0f,
-    // Back face
-    -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, -1.0f, 1.0f, 1.0f,
-    // Top face
-    -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, 1.0f,
-    // Bottom face
-    -1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, -1.0f,
-    // Right face
-    1.0f, 1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, 1.0f,
-    // Left face
-    -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, -1.0f
+    // Back face (z = -1)
+    -1.0f, -1.0f, -1.0f,
+    -1.0f,  1.0f, -1.0f,
+     1.0f,  1.0f, -1.0f,
+     1.0f,  1.0f, -1.0f,
+     1.0f, -1.0f, -1.0f,
+    -1.0f, -1.0f, -1.0f,
+
+    // Front face (z = 1)
+    -1.0f, -1.0f,  1.0f,
+     1.0f, -1.0f,  1.0f,
+     1.0f,  1.0f,  1.0f,
+     1.0f,  1.0f,  1.0f,
+    -1.0f,  1.0f,  1.0f,
+    -1.0f, -1.0f,  1.0f,
+
+    // Left face (x = -1)
+    -1.0f,  1.0f,  1.0f,
+    -1.0f,  1.0f, -1.0f,
+    -1.0f, -1.0f, -1.0f,
+    -1.0f, -1.0f, -1.0f,
+    -1.0f, -1.0f,  1.0f,
+    -1.0f,  1.0f,  1.0f,
+
+    // Right face (x = 1)
+     1.0f,  1.0f,  1.0f,
+     1.0f, -1.0f,  1.0f,
+     1.0f, -1.0f, -1.0f,
+     1.0f, -1.0f, -1.0f,
+     1.0f,  1.0f, -1.0f,
+     1.0f,  1.0f,  1.0f,
+
+    // Bottom face (y = -1)
+    -1.0f, -1.0f, -1.0f,
+     1.0f, -1.0f, -1.0f,
+     1.0f, -1.0f,  1.0f,
+     1.0f, -1.0f,  1.0f,
+    -1.0f, -1.0f,  1.0f,
+    -1.0f, -1.0f, -1.0f,
+
+    // Top face (y = 1)
+    -1.0f,  1.0f, -1.0f,
+    -1.0f,  1.0f,  1.0f,
+     1.0f,  1.0f,  1.0f,
+     1.0f,  1.0f,  1.0f,
+     1.0f,  1.0f, -1.0f,
+    -1.0f,  1.0f, -1.0f
 };
 
 export namespace App {
@@ -46,25 +82,24 @@ export namespace App {
         GLuint volumeTexture = 0;
         GLuint tfTexture = 0;
         
-        // Locations
+        int currentWidth = 1280;
+        int currentHeight = 720;
+
         GLint locMVP = -1, locModel = -1, locCamPos = -1, locLightDir = -1;
         GLint locStepSize = -1, locDensityThresh = -1, locOpacityMult = -1;
 
-        // Вспомогательная функция загрузки шейдера
         GLuint loadShader(const std::string& vertexSrc, const std::string& fragmentSrc) {
             auto compile = [](GLenum type, const std::string& src) -> GLuint {
                 GLuint shader = glCreateShader(type);
                 const char* c_str = src.c_str();
                 glShaderSource(shader, 1, &c_str, nullptr);
                 glCompileShader(shader);
-                
-                // Check errors
                 GLint success;
                 glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
                 if (!success) {
                     char infoLog[512];
                     glGetShaderInfoLog(shader, 512, nullptr, infoLog);
-                    std::cerr << "SHADER ERROR: " << infoLog << std::endl;
+                    std::cerr << "SHADER COMPILE ERROR (" << (type == GL_VERTEX_SHADER ? "VERT" : "FRAG") << "): " << infoLog << std::endl;
                 }
                 return shader;
             };
@@ -76,6 +111,18 @@ export namespace App {
             glAttachShader(prog, fs);
             glLinkProgram(prog);
             
+            GLint isLinked = 0;
+            glGetProgramiv(prog, GL_LINK_STATUS, &isLinked);
+            if (isLinked == GL_FALSE) {
+                char infoLog[512];
+                glGetProgramInfoLog(prog, 512, nullptr, infoLog);
+                std::cerr << "SHADER LINK ERROR: " << infoLog << std::endl;
+                glDeleteProgram(prog);
+                glDeleteShader(vs);
+                glDeleteShader(fs);
+                return 0;
+            }
+
             glDeleteShader(vs);
             glDeleteShader(fs);
             return prog;
@@ -84,7 +131,7 @@ export namespace App {
         std::string readFile(const std::string& path) {
             std::ifstream file(path);
             if (!file.is_open()) {
-                std::cerr << "Failed to open file: " << path << std::endl;
+                std::cerr << "ERROR: Failed to open file at: " << path << std::endl;
                 return "";
             }
             std::stringstream buffer;
@@ -96,6 +143,9 @@ export namespace App {
         Renderer() = default;
 
         bool init(int w, int h, const char* title) {
+            currentWidth = w;
+            currentHeight = h;
+
             if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS)) return false;
             
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
@@ -107,12 +157,8 @@ export namespace App {
             SDL_GL_MakeCurrent(window, context);
             SDL_GL_SetSwapInterval(0);
             
-            if (!gladLoadGL((GLADloadfunc)SDL_GL_GetProcAddress)) {
-                std::cerr << "Failed to init GLAD" << std::endl;
-                return false;
-            }
+            if (!gladLoadGL((GLADloadfunc)SDL_GL_GetProcAddress)) return false;
 
-            // Init ImGui
             IMGUI_CHECKVERSION();
             ImGui::CreateContext();
             ImGui::StyleColorsDark();
@@ -122,7 +168,6 @@ export namespace App {
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             
-            // Cube Setup
             glGenVertexArrays(1, &vao);
             glGenBuffers(1, &vbo);
             glBindVertexArray(vao);
@@ -131,18 +176,6 @@ export namespace App {
             glEnableVertexAttribArray(0);
             glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
-            // Default Shaders (Hardcoded Vertex, File-based Fragment)
-            std::string vertSrc = R"(#version 460 core
-                layout (location = 0) in vec3 aPos;
-                out vec3 vLocalPos;
-                uniform mat4 MVP;
-                void main() { 
-                    vLocalPos = aPos; 
-                    gl_Position = MVP * vec4(aPos, 1.0); 
-                }
-            )";
-            // Fragment will be loaded in renderFrame or pre-loaded. 
-            // For now, let's say we compile shaders when needed or use a default one.
             return true;
         }
 
@@ -150,13 +183,11 @@ export namespace App {
             ImGui_ImplOpenGL3_Shutdown();
             ImGui_ImplSDL3_Shutdown();
             ImGui::DestroyContext();
-            
             if (vao) glDeleteVertexArrays(1, &vao);
             if (vbo) glDeleteBuffers(1, &vbo);
             if (volumeTexture) glDeleteTextures(1, &volumeTexture);
             if (tfTexture) glDeleteTextures(1, &tfTexture);
             if (programID) glDeleteProgram(programID);
-            
             SDL_GL_DestroyContext(context);
             SDL_DestroyWindow(window);
             SDL_Quit();
@@ -166,13 +197,11 @@ export namespace App {
             if (volumeTexture) glDeleteTextures(1, &volumeTexture);
             glGenTextures(1, &volumeTexture);
             glBindTexture(GL_TEXTURE_3D, volumeTexture);
-            
             glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
             glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
             glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
             glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
             glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-
             glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
             glTexImage3D(GL_TEXTURE_3D, 0, GL_RGBA8, w, h, d, 0, GL_RGBA, GL_UNSIGNED_BYTE, data.data());
         }
@@ -181,11 +210,9 @@ export namespace App {
             if (tfTexture) glDeleteTextures(1, &tfTexture);
             glGenTextures(1, &tfTexture);
             glBindTexture(GL_TEXTURE_1D, tfTexture);
-            
             glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
             glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
             glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-            
             glTexImage1D(GL_TEXTURE_1D, 0, GL_RGBA, (GLsizei)data.size(), 0, GL_RGBA, GL_FLOAT, data.data());
         }
 
@@ -216,7 +243,6 @@ export namespace App {
         }
 
         void renderFrame(const Camera& cam, const RenderSettings& settings, float modelRotY, const std::string& fragPath) {
-            // Lazy Shader Init
             if (programID == 0) {
                 std::string vertSrc = R"(#version 460 core
                     layout (location = 0) in vec3 aPos;
@@ -225,11 +251,16 @@ export namespace App {
                     void main() { vLocalPos = aPos; gl_Position = MVP * vec4(aPos, 1.0); }
                 )";
                 std::string fragSrc = readFile(fragPath);
-                if (fragSrc.empty()) return; // Error handled in readFile
+                if (fragSrc.empty()) {
+                    glClear(GL_COLOR_BUFFER_BIT);
+                    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+                    SDL_GL_SwapWindow(window);
+                    return;
+                }
                 
                 programID = loadShader(vertSrc, fragSrc);
-                
-                // Get Uniforms
+                if (programID == 0) return;
+
                 locMVP = glGetUniformLocation(programID, "MVP");
                 locModel = glGetUniformLocation(programID, "u_ModelMatrix");
                 locCamPos = glGetUniformLocation(programID, "u_CameraPos");
@@ -243,31 +274,33 @@ export namespace App {
                 glUniform1i(glGetUniformLocation(programID, "u_TransferFunction"), 1);
             }
 
-            // Rendering
-            glViewport(0, 0, 1280, 720); // Или получить реальный размер окна
             glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             glUseProgram(programID);
             
-            // State
-            glDisable(GL_BLEND); // Raymarching делает бленд сам
+            // ВАЖНО: Рисуем и передние и задние грани
+            glDisable(GL_CULL_FACE); 
+            
+            glDisable(GL_BLEND);
             glEnable(GL_DEPTH_TEST);
 
-            // Bind Textures
             glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_3D, volumeTexture);
             glActiveTexture(GL_TEXTURE1);
             glBindTexture(GL_TEXTURE_1D, tfTexture);
 
-            // Matrices
-            glm::mat4 projection = glm::perspective(glm::radians(45.0f), 1280.0f/720.0f, 0.1f, 100.0f);
+            float aspect = (float)currentWidth / (float)currentHeight;
+            if (currentHeight == 0) aspect = 1.0f;
+            
+            // ИСПРАВЛЕНИЕ: zNear = 0.01f чтобы избежать раннего отсечения при полете внутри
+            glm::mat4 projection = glm::perspective(glm::radians(45.0f), aspect, 0.01f, 100.0f);
+            
             glm::mat4 view = cam.getViewMatrix();
             glm::mat4 model = glm::rotate(glm::mat4(1.0f), glm::radians(modelRotY), glm::vec3(0, 1, 0));
-            model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1, 0, 0)); // Коррекция осей объема
+            model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1, 0, 0));
             glm::mat4 mvp = projection * view * model;
 
-            // Uniforms
             glUniformMatrix4fv(locMVP, 1, GL_FALSE, glm::value_ptr(mvp));
             glUniformMatrix4fv(locModel, 1, GL_FALSE, glm::value_ptr(model));
             glUniform3fv(locCamPos, 1, glm::value_ptr(cam.getPosition()));
@@ -279,7 +312,6 @@ export namespace App {
             glBindVertexArray(vao);
             glDrawArrays(GL_TRIANGLES, 0, 36);
 
-            // Render UI
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             glDisable(GL_DEPTH_TEST);
@@ -289,7 +321,12 @@ export namespace App {
             SDL_GL_SwapWindow(window);
         }
 
-        void handleResize(int w, int h) { glViewport(0, 0, w, h); }
+        void handleResize(int w, int h) { 
+            currentWidth = w;
+            currentHeight = h;
+            glViewport(0, 0, w, h); 
+        }
+        
         SDL_Window* getWindow() { return window; }
     };
 }

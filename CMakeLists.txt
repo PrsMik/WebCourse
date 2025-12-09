@@ -81,11 +81,11 @@ add_executable(${PROJECT_NAME}
 target_sources(${PROJECT_NAME} 
     PUBLIC 
     FILE_SET CXX_MODULES FILES
-        src/Types.ixx
-        src/Camera.ixx
-        src/Model.ixx
-        src/View.ixx
-        src/Presenter.ixx
+        src/Types.cppm
+        src/Camera.cppm
+        src/Model.cppm
+        src/View.cppm
+        src/Presenter.cppm
 )
 
 # --- ВКЛЮЧАЕМ СКАНИРОВАНИЕ ТОЛЬКО ЗДЕСЬ ---
@@ -122,3 +122,36 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     assimp 
     imgui
 )
+if(CMAKE_EXPORT_COMPILE_COMMANDS)
+# ... (Остальной код для compile_commands.json без изменений)
+    set(COMPILE_COMMANDS_PATH "${CMAKE_BINARY_DIR}/compile_commands.json")
+    set(DESTINATION_PATH "${CMAKE_SOURCE_DIR}/compile_commands.json")
+    
+    # 1. Сначала генерируем файл (он создаётся во время сборки)
+    # Используем команду execute_process, которая будет выполняться на этапе конфигурации
+    execute_process(
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different 
+                "${COMPILE_COMMANDS_PATH}" 
+                "${DESTINATION_PATH}"
+        RESULT_VARIABLE COPY_STATUS
+        ERROR_VARIABLE COPY_ERROR # Можно использовать для отладки
+    )
+    if(NOT COPY_STATUS EQUAL 0)
+        message(STATUS "Не удалось скопировать compile_commands.json в ${CMAKE_SOURCE_DIR}")
+        message(COPY_ERROR)
+    else()
+        # 2. Манипуляция содержимым файла для исправления регистра диска
+        message(STATUS "Исправление регистра диска в ${DESTINATION_PATH} для clangd...")
+        
+        # Читаем содержимое файла в переменную
+        file(READ "${DESTINATION_PATH}" COMPILE_COMMANDS_CONTENT)
+        
+        # Заменяем D: на d:
+        string(REPLACE "D:" "d:" COMPILE_COMMANDS_CONTENT "${COMPILE_COMMANDS_CONTENT}")
+        
+        # Записываем измененное содержимое обратно в файл
+        file(WRITE "${DESTINATION_PATH}" "${COMPILE_COMMANDS_CONTENT}")
+        
+        message(STATUS "Исправление завершено.")
+    endif()
+endif()

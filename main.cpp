@@ -3,7 +3,7 @@ import App.Presenter;
 
 // Определения из CMake/Build system
 #ifndef DATA_DIR
-#define DATA_DIR "./"
+#define DATA_DIR "."
 #endif
 
 int main(int argc, char** argv) {
@@ -15,7 +15,8 @@ int main(int argc, char** argv) {
 
     App::Presenter app(W, H, D);
     
-    if (!app.initialize(volPath)) {
+    if (!app.initialize(volPath)) 
+    {
         return -1;
     }
 
