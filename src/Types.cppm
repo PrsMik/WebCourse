@@ -1,32 +1,38 @@
 module;
 
-#include <glm/glm.hpp>
 #include <cstdint>
+#include <glm/glm.hpp>
 #include <vector>
+
 
 export module App.Types;
 
-export namespace App {
+export namespace App
+{
 
-    // Структура вокселя (как в оригинале)
-    struct Voxel {
+    struct Voxel
+    {
         uint8_t r, g, b, a;
     };
 
-    // Настройки, которые View может менять через UI, а Presenter передает в Model/Shader
-    struct RenderSettings {
-        float stepSize = 0.01f;
+    struct RenderSettings
+    {
+        // Текущий шаг (вычисляется каждый кадр)
+        float stepSize = 0.005f;
+
         float densityThreshold = 0.20f;
         float opacityMultiplier = 1.0f;
         glm::vec3 lightDir = {-0.5f, 0.5f, -1.0f};
         bool vsync = false;
-        
-        // Для динамического изменения качества
-        float highQualityStep = 0.005f;
-        float lowQualityStep = 0.015f;
+
+        // --- Новые поля для управления качеством ---
+        bool dynamicQuality = true;     // Вкл/Выкл адаптивный шаг
+        float highQualityStep = 0.004f; // Шаг в покое (или ручной шаг)
+        float lowQualityStep = 0.02f;   // Шаг при движении
     };
 
-    enum class TFPreset {
+    enum class TFPreset
+    {
         Bone,
         Muscle,
         Rainbow
