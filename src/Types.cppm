@@ -41,7 +41,6 @@ export namespace App
         float highQualityStep = 0.004f;
         float lowQualityStep = 0.02f;
 
-        // НОВОЕ: Масштаб отображения (по умолчанию куб)
         glm::vec3 volumeScale = {1.0f, 1.0f, 1.0f};
     };
 

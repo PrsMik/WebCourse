@@ -43,7 +43,6 @@ export namespace App
 
             std::cout << "Reading " << numVoxels << " voxels..." << std::endl;
 
-            // Логика загрузки (без изменений с прошлого шага, так как она рабочая для 16 бит)
             if (meta.type == DataType::UInt8)
             {
                 file.read(reinterpret_cast<char *>(densityData.data()), numVoxels);
@@ -114,7 +113,6 @@ export namespace App
             return true;
         }
 
-        // ВЕРНУЛИ СТАРЫЕ ЗНАЧЕНИЯ (как просили)
         void updateTransferFunction(TFPreset preset)
         {
             for (int i = 0; i < 256; i++)
@@ -124,8 +122,6 @@ export namespace App
 
                 if (preset == TFPreset::Bone)
                 {
-                    // Старые значения: кожа 0.15-0.25, кость > 0.35
-                    // Это вернет "кости снаружи", но исправит смешивание тканей
                     if (t > 0.15f && t < 0.25f)
                         color = glm::vec4(0.6f, 0.4f, 0.3f, 0.05f);
                     else if (t > 0.35f)

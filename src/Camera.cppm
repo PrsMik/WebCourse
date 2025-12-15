@@ -17,13 +17,11 @@ export namespace App
         glm::vec3 target;
         glm::vec3 up;
 
-        // Векторы локальной системы координат
         glm::vec3 forward;
         glm::vec3 right;
 
         void updateVectors()
         {
-            // Forward вычисляется как разница, либо управляется вращением
             forward = glm::normalize(target - position);
 
             glm::vec3 worldUp = glm::vec3(0.0f, 1.0f, 0.0f);
@@ -49,8 +47,6 @@ export namespace App
 
         void moveForward(float dist)
         {
-            // ИСПРАВЛЕНИЕ: Движение строго по вектору взгляда (Free Fly)
-            // Раньше тут было обнуление Y, что мешало лететь туда, куда смотришь.
             glm::vec3 offset = forward * dist;
             position += offset;
             target += offset;
@@ -72,21 +68,18 @@ export namespace App
             target += offset;
         }
 
-        // --- ВРАЩЕНИЕ (FPS Style) ---
-
         void rotateYaw(float angleDeg)
         {
             glm::vec3 worldUp(0, 1, 0);
-            // Вращаем вектор forward вокруг мировой оси Y
+
             forward = glm::rotate(forward, glm::radians(angleDeg), worldUp);
-            // Обновляем target
+
             target = position + forward;
             updateVectors();
         }
 
         void rotatePitch(float angleDeg)
         {
-            // Вращаем вектор forward вокруг локальной оси Right
             glm::vec3 newForward = glm::rotate(forward, glm::radians(angleDeg), right);
 
             // Ограничение, чтобы не перевернуться через голову

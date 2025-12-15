@@ -20,7 +20,6 @@ export module App.View;
 import App.Types;
 import App.Camera;
 
-// Вершины куба остаются те же...
 static const float cubeVerts[] = {
     -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f,
     -1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, -1.0f, 1.0f,
@@ -156,7 +155,6 @@ export namespace App
             glTexImage1D(GL_TEXTURE_1D, 0, GL_RGBA, (GLsizei)data.size(), 0, GL_RGBA, GL_FLOAT, data.data());
         }
 
-        // Добавлен аргумент modelRotation для отображения в UI
         bool renderUI(RenderSettings &settings, TFPreset &currentPreset, float fps,
                       const std::vector<VolumeMetadata> &presets, VolumeMetadata *outLoadRequest,
                       glm::vec3 *modelRotation)
@@ -221,7 +219,6 @@ export namespace App
                     if (ImGui::Button("Reset Scale"))
                         settings.volumeScale = glm::vec3(1.0f);
 
-                    // --- НОВОЕ: Слайдеры для вращения ---
                     ImGui::Separator();
                     ImGui::Text("Rotation (Arrows + PageUp/Dn):");
                     ImGui::SliderFloat("Rot X", &modelRotation->x, 0.0f, 360.0f);
@@ -229,7 +226,6 @@ export namespace App
                     ImGui::SliderFloat("Rot Z", &modelRotation->z, 0.0f, 360.0f);
                     if (ImGui::Button("Reset Rotation"))
                         *modelRotation = glm::vec3(0.0f);
-                    // ------------------------------------
 
                     ImGui::Separator();
                     ImGui::Text("Custom RAW:");
@@ -254,7 +250,6 @@ export namespace App
             return changed;
         }
 
-        // Принимаем glm::vec3 modelRot
         void renderFrame(const Camera &cam, const RenderSettings &settings, glm::vec3 modelRot, const std::string &fragPath)
         {
             if (programID == 0)
@@ -308,12 +303,12 @@ export namespace App
             // --- НОВОЕ: Вращение по 3 осям ---
             glm::mat4 model = glm::mat4(1.0f);
 
-            // Применяем вращения пользователя
+            // Вращения пользователя
             model = glm::rotate(model, glm::radians(modelRot.x), glm::vec3(1, 0, 0)); // Pitch
             model = glm::rotate(model, glm::radians(modelRot.y), glm::vec3(0, 1, 0)); // Yaw
             model = glm::rotate(model, glm::radians(modelRot.z), glm::vec3(0, 0, 1)); // Roll
 
-            // Коррекция системы координат (Z-up -> Y-up)
+            // Коррекция системы координат
             model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1, 0, 0));
 
             // Масштабирование

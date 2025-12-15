@@ -28,7 +28,6 @@ export namespace App
         bool isRunning = true;
         bool mouseCaptured = false;
 
-        // ИЗМЕНЕНИЕ: Теперь храним вектор вращения (X, Y, Z) в градусах
         glm::vec3 modelRotation = glm::vec3(0.0f, 0.0f, 0.0f);
 
         TFPreset currentPreset = TFPreset::Bone;
@@ -64,7 +63,6 @@ export namespace App
                 view.setVolumeData(model.getWidth(), model.getHeight(), model.getDepth(), model.getVolumeData());
                 view.setTFData(model.getTFData());
 
-                // Сброс вращения при загрузке нового файла (опционально)
                 modelRotation = glm::vec3(0.0f);
 
                 if (meta.name.find("Male Head") != std::string::npos)
@@ -155,7 +153,7 @@ export namespace App
                 }
                 else
                 {
-                    // --- НОВОЕ: Управление вращением модели ---
+                    // Управление вращением модели
                     // Y - Влево/Вправо
                     if (keys[SDL_SCANCODE_LEFT])
                     {
@@ -202,7 +200,6 @@ export namespace App
                 VolumeMetadata loadReq;
                 loadReq.width = 0;
 
-                // Передаем теперь вектор modelRotation
                 bool tfChanged = view.renderUI(settings, currentPreset, 1.0f / dt, presets, &loadReq, &modelRotation);
 
                 if (tfChanged)
