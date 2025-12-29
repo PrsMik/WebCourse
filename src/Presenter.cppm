@@ -29,7 +29,6 @@ export namespace App
         Camera camera;
         RenderSettings settings;
 
-        // --- НОВОЕ: Переменная состояния ---
         AppState state = AppState::Intro;
 
         bool isRunning = true;
@@ -64,7 +63,6 @@ export namespace App
             if (startH < 1)
                 startH = 600;
 
-            // Предустановка режима для мобильных, но не включение сразу (ждем выбора пользователя)
             if (startW < 800 || startH < 600)
             {
                 settings.isMobile = true;
@@ -104,7 +102,7 @@ export namespace App
         void update()
         {
             SDL_Event event;
-            // Считываем события в обоих режимах
+
             while (SDL_PollEvent(&event))
             {
                 ImGui_ImplSDL3_ProcessEvent(&event);
@@ -113,7 +111,6 @@ export namespace App
                 if (event.type == SDL_EVENT_WINDOW_RESIZED)
                     view.handleResize(event.window.data1, event.window.data2);
 
-                // Интерактив камеры только в режиме Running
                 if (state == AppState::Running && !settings.isMobile)
                 {
                     if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN && event.button.button == SDL_BUTTON_LEFT)
@@ -137,19 +134,15 @@ export namespace App
                 }
             }
 
-            // --- РЕЖИМ ПРИВЕТСТВИЯ ---
             if (state == AppState::Intro)
             {
-                // Рисуем меню. Если вернуло true - нажали старт.
                 if (view.renderIntroScreen(settings))
                 {
                     state = AppState::Running;
-                    lastTime = SDL_GetTicks(); // Сброс таймера, чтобы dt не был гигантским
+                    lastTime = SDL_GetTicks();
                 }
                 return;
             }
-
-            // --- РЕЖИМ РЕНДЕРИНГА ---
 
             uint64_t now = SDL_GetTicks();
             float dt = (now - lastTime) / 1000.0f;

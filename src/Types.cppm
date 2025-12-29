@@ -9,11 +9,10 @@ export module App.Types;
 
 export namespace App
 {
-    // --- НОВОЕ: Состояния приложения ---
     enum class AppState
     {
-        Intro,  // Экран приветствия (GPU отдыхает)
-        Running // Основной режим (GPU работает)
+        Intro,
+        Running
     };
 
     struct Voxel
@@ -49,7 +48,6 @@ export namespace App
 
         glm::vec3 volumeScale = {1.0f, 1.0f, 1.0f};
 
-        // --- UI & CONTROL ---
         bool isMobile = false;
         bool showOnScreenControls = true;
         float uiScale = 1.0f;

@@ -233,10 +233,8 @@ export namespace App
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, (GLsizei)data.size(), 1, 0, GL_RGBA, GL_UNSIGNED_BYTE, byteData.data());
         }
 
-        // --- НОВОЕ: Отрисовка стартового экрана ---
         bool renderIntroScreen(RenderSettings &settings)
         {
-            // Обработка ресайза
             int pixelW, pixelH;
             SDL_GetWindowSizeInPixels(window, &pixelW, &pixelH);
             if (pixelW != currentPixelWidth || pixelH != currentPixelHeight)
@@ -246,7 +244,6 @@ export namespace App
                 glViewport(0, 0, currentPixelWidth, currentPixelHeight);
             }
 
-            // Очистка экрана (чтобы не было мусора)
             glClearColor(0.05f, 0.05f, 0.07f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
@@ -284,7 +281,6 @@ export namespace App
 
                 ImGui::Dummy(ImVec2(0, 20));
 
-                // Центрируем кнопку
                 float btnWidth = 150.0f * currentUiScale;
                 float avail = ImGui::GetContentRegionAvail().x;
                 ImGui::SetCursorPosX((avail - btnWidth) * 0.5f);
@@ -381,7 +377,7 @@ export namespace App
                 rightJoyFinger = 0;
 
             outInput->moveDir.z = -leftVal.y;
-            outInput->moveDir.x = leftVal.x;
+            outInput->moveDir.x = -leftVal.x;
             outInput->lookDir.x = rightVal.x;
             outInput->lookDir.y = rightVal.y;
 
@@ -536,13 +532,13 @@ export namespace App
 
                 ImGui::Button("Up", ImVec2(btnW / 2 - 5, 40 * settings.uiScale));
                 if (ImGui::IsItemActive())
-                    outMobileInput->moveDir.y = 1.0f;
+                    outMobileInput->moveDir.y = -1.0f;
 
                 ImGui::SameLine();
 
                 ImGui::Button("Dn", ImVec2(btnW / 2 - 5, 40 * settings.uiScale));
                 if (ImGui::IsItemActive())
-                    outMobileInput->moveDir.y = -1.0f;
+                    outMobileInput->moveDir.y = 1.0f;
 
                 ImGui::End();
             }

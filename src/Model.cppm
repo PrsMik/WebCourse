@@ -9,7 +9,6 @@ module;
 #include <string>
 #include <vector>
 
-// OpenMP сложен для WebAssembly (требует SharedArrayBuffer), отключаем для веба
 #ifndef __EMSCRIPTEN__
 #include <omp.h>
 #endif
@@ -82,7 +81,6 @@ export namespace App
             this->depth = meta.depth;
             volumeData.resize(numVoxels);
 
-// Расчет градиентов
 #ifndef __EMSCRIPTEN__
 #pragma omp parallel for
 #endif
