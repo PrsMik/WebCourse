@@ -9,6 +9,12 @@ export module App.Types;
 
 export namespace App
 {
+    // --- НОВОЕ: Состояния приложения ---
+    enum class AppState
+    {
+        Intro,  // Экран приветствия (GPU отдыхает)
+        Running // Основной режим (GPU работает)
+    };
 
     struct Voxel
     {
@@ -32,7 +38,7 @@ export namespace App
     struct RenderSettings
     {
         float stepSize = 0.005f;
-        float densityThreshold = 0.20f;
+        float densityThreshold = 0.10f;
         float opacityMultiplier = 1.0f;
         glm::vec3 lightDir = {-0.5f, 0.5f, -1.0f};
         bool vsync = false;
@@ -42,6 +48,11 @@ export namespace App
         float lowQualityStep = 0.02f;
 
         glm::vec3 volumeScale = {1.0f, 1.0f, 1.0f};
+
+        // --- UI & CONTROL ---
+        bool isMobile = false;
+        bool showOnScreenControls = true;
+        float uiScale = 1.0f;
     };
 
     enum class TFPreset
@@ -49,5 +60,11 @@ export namespace App
         Bone,
         Muscle,
         Rainbow
+    };
+
+    struct MobileInputData
+    {
+        glm::vec3 moveDir; // x, y, z
+        glm::vec2 lookDir; // pitch, yaw
     };
 }

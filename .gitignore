@@ -1,5 +1,6 @@
 out/
 .vscode/
 /build/
+/build_web/
 compile_commands.json
 .cache/

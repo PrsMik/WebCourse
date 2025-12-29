@@ -1,0 +1,64 @@
+name: Build and Deploy WebAssembly
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Emscripten
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: 4.0.22
+
+      - name: Install Ninja
+        run: sudo apt-get install -y ninja-build
+
+      - name: Configure CMake
+        run: emcmake cmake -B build_web -G Ninja -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build_web
+
+      - name: Prepare for Deployment
+        run: |
+          mkdir public
+          # Копируем сгенерированные файлы. Имя файла зависит от project(...) в CMake
+          cp build_web/Wordle++.html public/index.html
+          cp build_web/Wordle++.js public/
+          cp build_web/Wordle++.wasm public/
+          # Копируем data файл, если он создался (зависит от размера ассетов)
+          if [ -f build_web/Wordle++.data ]; then
+            cp build_web/Wordle++.data public/
+          fi
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

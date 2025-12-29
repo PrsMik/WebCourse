@@ -1,28 +1,33 @@
 cmake_minimum_required(VERSION 3.30.0)
 project(Wordle++ VERSION 0.1.0 LANGUAGES C CXX)
 
-set(CMAKE_CXX_STANDARD 23)
+# Понижаем до 20, так как поддержка модулей C++23 в Emscripten может быть нестабильной (конфликты ABI)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 
-# --- ВАЖНОЕ ИСПРАВЛЕНИЕ ---
-# Отключаем сканирование модулей по умолчанию.
-# Это спасет ImGui и SDL от ошибок "compiler does not provide a way...".
+# Отключаем сканирование модулей по умолчанию
 set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
+if(EMSCRIPTEN)
+    set(CMAKE_EXECUTABLE_SUFFIX ".html")
+    add_compile_options(-fno-exceptions -fno-rtti)
+else()
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
+    find_package(OpenGL REQUIRED)
+    
+    set(GLAD_ROOT_DIR "${PROJECT_SOURCE_DIR}/lib/glad")
+    add_subdirectory(lib/glad/cmake)
+    glad_add_library(glad_opengl STATIC API gl:core=4.6 REPRODUCIBLE)
+endif()
 
-# --- ЗАВИСИМОСТИ ---
-# SDL3
-add_subdirectory(lib/SDL EXCLUDE_FROM_ALL)
-
-# OpenGL
-find_package(OpenGL REQUIRED)
-
-# GLAD
-set(GLAD_ROOT_DIR "${PROJECT_SOURCE_DIR}/lib/glad")
-add_subdirectory(lib/glad/cmake)
-glad_add_library(glad_opengl STATIC API gl:core=4.6 REPRODUCIBLE)
+# SDL3 через FetchContent
+include(FetchContent)
+FetchContent_Declare(
+  SDL3
+  GIT_REPOSITORY https://github.com/libsdl-org/SDL.git
+  GIT_TAG preview-3.1.3
+)
+FetchContent_MakeAvailable(SDL3)
 
 # ImGui
 set(IMGUI_DIR "${PROJECT_SOURCE_DIR}/lib/imgui")
@@ -37,47 +42,26 @@ set(IMGUI_SOURCES
 )
 add_library(imgui STATIC ${IMGUI_SOURCES})
 target_include_directories(imgui PUBLIC ${IMGUI_DIR})
-target_link_libraries(imgui PUBLIC SDL3::SDL3 glad_opengl OpenGL::GL)
 
-# Убеждаемся, что для ImGui сканирование точно выключено
+if(EMSCRIPTEN)
+    target_link_libraries(imgui PUBLIC SDL3::SDL3)
+else()
+    target_link_libraries(imgui PUBLIC SDL3::SDL3 glad_opengl OpenGL::GL)
+endif()
+
 set_target_properties(imgui PROPERTIES CXX_SCAN_FOR_MODULES OFF)
 
 set(GLM_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/lib/glm")
 
-# Assimp
-add_subdirectory(lib/assimp)
-if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    # Подавление варнингов (ваш блок кода)
-    set(ASSIMP_CLANG_SUPPRESS_FLAGS 
-        -Wno-unsafe-buffer-usage -Wno-switch-default -Wno-format 
-        -Wno-unreachable-code-break -Wno-deprecated-copy -Wno-unused-member-function
-        -Wno-deprecated-non-prototype -Wno-padded -Wno-nrvo 
-        -Wno-unique-object-duplication -Wno-missing-noreturn 
-        -Wno-unnecessary-virtual-specifier -Wno-c++-keyword -Wno-character-conversion
-    )
-    target_compile_options(assimp PRIVATE $<$<OR:$<COMPILE_LANGUAGE:CXX>,$<COMPILE_LANGUAGE:C>>:${ASSIMP_CLANG_SUPPRESS_FLAGS}>)
-    if(TARGET unit)
-        target_compile_options(unit PRIVATE $<$<OR:$<COMPILE_LANGUAGE:CXX>,$<COMPILE_LANGUAGE:C>>:${ASSIMP_CLANG_SUPPRESS_FLAGS}>)
-    endif()
-    set_property(TARGET assimp APPEND PROPERTY RC_FLAGS "-c65001")
+# --- КОНФИГУРАЦИЯ ---
+set(DATA_DIR "/data")
+if(NOT EMSCRIPTEN)
+    set(DATA_DIR "${PROJECT_SOURCE_DIR}/data")
 endif()
 
-# --- КОНФИГУРАЦИЯ ---
-set(DATA_DIR "${PROJECT_SOURCE_DIR}/data")
-set(SHADERS_DIR "${PROJECT_SOURCE_DIR}/shaders")
-
-configure_file(
-    "cmake/config.h.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/config.h"
-    @ONLY
-)
-
 # --- ОСНОВНОЙ ТАРГЕТ ---
-add_executable(${PROJECT_NAME} 
-    main.cpp
-)
+add_executable(${PROJECT_NAME} main.cpp)
 
-# Добавляем модули
 target_sources(${PROJECT_NAME} 
     PUBLIC 
     FILE_SET CXX_MODULES FILES
@@ -88,70 +72,36 @@ target_sources(${PROJECT_NAME}
         src/Presenter.cppm
 )
 
-# --- ВКЛЮЧАЕМ СКАНИРОВАНИЕ ТОЛЬКО ЗДЕСЬ ---
-# Включаем сканирование модулей только для нашего проекта.
-# Если вы используете Ninja, это заставит его строить граф зависимостей.
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_SCAN_FOR_MODULES ON)
 
-if(WIN32)
-    if(CMAKE_SIZEOF_VOID_P EQUAL 8) 
-        target_compile_definitions(${PROJECT_NAME} PRIVATE "_AMD64_") 
-    elseif(CMAKE_SIZEOF_VOID_P EQUAL 4) 
-        target_compile_definitions(${PROJECT_NAME} PRIVATE "_X86_")
-    endif()
-endif()
-
-target_include_directories(Wordle++ PRIVATE 
+target_include_directories(${PROJECT_NAME} PRIVATE 
     "${CMAKE_CURRENT_BINARY_DIR}"
-    "${PROJECT_SOURCE_DIR}/lib/glad/include"
     "${GLM_INCLUDE_DIR}"
     "${IMGUI_DIR}"
 )
 
-target_compile_definitions(Wordle++
+if(NOT EMSCRIPTEN)
+    target_include_directories(${PROJECT_NAME} PRIVATE "${PROJECT_SOURCE_DIR}/lib/glad/include")
+endif()
+
+target_compile_definitions(${PROJECT_NAME}
     PRIVATE 
     DATA_DIR="${DATA_DIR}"
-    SHADERS_DIR="${SHADERS_DIR}"
-    IMGUI_IMPL_OPENGL_LOADER_GLAD 
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE 
-    SDL3::SDL3 
-    OpenGL::GL 
-    glad_opengl 
-    assimp 
-    imgui
-)
-if(CMAKE_EXPORT_COMPILE_COMMANDS)
-# ... (Остальной код для compile_commands.json без изменений)
-    set(COMPILE_COMMANDS_PATH "${CMAKE_BINARY_DIR}/compile_commands.json")
-    set(DESTINATION_PATH "${CMAKE_SOURCE_DIR}/compile_commands.json")
+if(EMSCRIPTEN)
+    # Линковка для WEB
+    target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3 imgui)
     
-    # 1. Сначала генерируем файл (он создаётся во время сборки)
-    # Используем команду execute_process, которая будет выполняться на этапе конфигурации
-    execute_process(
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different 
-                "${COMPILE_COMMANDS_PATH}" 
-                "${DESTINATION_PATH}"
-        RESULT_VARIABLE COPY_STATUS
-        ERROR_VARIABLE COPY_ERROR # Можно использовать для отладки
+    # Флаги Emscripten.
+    # ВАЖНО: Используем синтаксис "-sFLAG=VAL" без пробелов, чтобы CMake передал их корректно.
+    target_link_options(${PROJECT_NAME} PRIVATE
+        "-sUSE_WEBGL2=1"
+        "-sALLOW_MEMORY_GROWTH=1"
+        "-sNO_EXIT_RUNTIME=0"
+        "--preload-file" "${PROJECT_SOURCE_DIR}/data@/data"
     )
-    if(NOT COPY_STATUS EQUAL 0)
-        message(STATUS "Не удалось скопировать compile_commands.json в ${CMAKE_SOURCE_DIR}")
-        message(COPY_ERROR)
-    else()
-        # 2. Манипуляция содержимым файла для исправления регистра диска
-        message(STATUS "Исправление регистра диска в ${DESTINATION_PATH} для clangd...")
-        
-        # Читаем содержимое файла в переменную
-        file(READ "${DESTINATION_PATH}" COMPILE_COMMANDS_CONTENT)
-        
-        # Заменяем D: на d:
-        string(REPLACE "D:" "d:" COMPILE_COMMANDS_CONTENT "${COMPILE_COMMANDS_CONTENT}")
-        
-        # Записываем измененное содержимое обратно в файл
-        file(WRITE "${DESTINATION_PATH}" "${COMPILE_COMMANDS_CONTENT}")
-        
-        message(STATUS "Исправление завершено.")
-    endif()
+else()
+    # Линковка для Desktop
+    target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3 OpenGL::GL glad_opengl imgui)
 endif()
